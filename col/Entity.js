@@ -8,5 +8,6 @@ class Entity
         this.up=false;
         this.state=null;
         this.texture=texture;
+        this.transform=1;
     }
 }

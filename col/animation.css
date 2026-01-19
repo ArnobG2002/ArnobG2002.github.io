@@ -1,0 +1,18 @@
+.standing {
+    background-image: url("./megaman/stand64.png");
+}
+.animatedSprite {
+  
+  background-image: url("./megaman/run64.png");
+
+  /* duration, timing function, number of iterations, animation name */
+  animation: 4s steps(4) infinite sprite-animation;
+}
+@keyframes sprite-animation {
+  0% {
+    background-position-x: 256px;
+  }
+  100% {
+    background-position-x: 0;
+  }
+}

@@ -9,7 +9,13 @@ Arnob's Home Page
 <script src="col/Entity.js"></script>
 <script src="col/scene.js"></script>
 <script src="col/Physics.js"></script>
+<div style="display: none;">
+  <img
+    id="stand"
+    src="./col/megaman/stand64.png"/>
 
+  <div class="animatedSprite" id="run"></div>
+</div>
 <script>
   init1 = function() {
       
@@ -124,9 +130,92 @@ Arnob's Home Page
     <section class="fs-5">
           <img class="rightimg" width="190px" src="6_n.jpg">
           <p class="red"> Looking to get hired. </p>
-          <p> <a href="GArnob/index.html">Greetings to you!</a> I am a graduate from the Memorial University of Newfoundland 
-            in the <a href="https://www.mun.ca/computerscience/">Department of Computer Science</a>. </p>
-          <p> In computer science, my interest is in data visualization. If physics can be bifurcated into two parts - 
+          <p> <a href="GArnob/index.html">Greetings to you!</a>  </p>
+    </section>
+    <article class="fs-5">
+        <h1>Education</h1>
+        <div class="row position-relative">
+          <div class="col-7 fs-4">
+            Summary: Bachelor of Science (Honours) in Computer Science (2021-2025)
+          </div>
+          <div class="col"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Memorial_University_of_Newfoundland_Logo.svg/1280px-Memorial_University_of_Newfoundland_Logo.svg.png" alt="" style="width: 10%; position:absolute; bottom: 0px;"></div>
+        </div>
+        
+        <h2>From an Edexcel Physics Paper to the Holodeck: A Personal Academic Curiosity</h2>
+
+        <div class="row">
+          <div class="col-8">
+            <p>
+              It was during my A Levels, while preparing for <strong>Edexcel Physics</strong>, that I encountered an unexpected introduction to <em>Star Trek</em>.
+              I was working through past paper questions on Nuclear Physics when I came across a problem framed around the
+              <em>Starship Enterprise</em>. That was my first exposure to the franchise, and it immediately stood out to me.
+            </p>
+            <p>
+            As I explored the series further, my interest gradually narrowed to the concept of the Holodeck.
+            I began to wonder whether anything resembling such a system existed in reality, even as part of
+            <strong>emerging technologies</strong>. This curiosity led me to the <a href="https://en.wikipedia.org/wiki/Holographic_display">Wikipedia page on
+            holographic displays</a>. As I read through it, I became increasingly convinced that such technologies
+            could have meaningful <strong>use cases</strong>, particularly in the context of
+            <strong>defence applications</strong>. Surprisingly, however, there was no explicit mention of the military or
+            defence sector anywhere on the page.
+            </p>
+          </div>
+          <div class="col"><img src="Education/startrekquestion.png" alt="" style="width: 100%;"></div>
+        </div>
+        
+
+        <div class="row"><div class="col-5">
+          <a href="https://pmt.physicsandmathstutor.com/download/Biology/A-level/Past-Papers/Edexcel-IAL/Unit-5/January%202013%20INS%20-%20Unit%205%20Edexcel%20Biology%20A-level.pdf">
+            <img src="Education/darpapassage.png" alt="" style="width: 100%;">
+          </a>
+        </div>
+        <div class="col">
+          <p>
+              There was, however, one name that caught my attention: DARPA. I recognised the acronym only because
+              I had once skimmed through a Biology A Level Unit 5 past paper while deciding whether to take Biology.
+              That paper mentioned DARPA in the context of research into creating "a fourth group" of food, in addition to
+              proteins, carbohydrates, and fats. I ultimately did not take Biology—largely because the DARPA article was the only part of the
+              paper I found interesting—but it left a lasting impression. From that article, I learned that DARPA stands for the
+              <i>U.S. Defense Advanced Research Projects Agency</i>.
+          </p>
+
+          <p>
+              This discovery reinforced my intuition that holographic display systems could have non-obvious
+              defence applications. Wanting to learn more, I followed the reference links and found that, at the
+              time, the available information was limited to a brief mention of DARPA sponsoring early research into
+              battlespace visualisation around 2011. In those days, Wikipedia was effectively my most reliable
+              source of information. If I could not find further details there, I was unsure where else to look.
+          </p>
+        </div>
+        </div>
+
+        
+
+        <p>
+            A general Google search felt unreliable; terms such as <em>holography</em> often attract speculative or fictional
+            material presented as fact. To avoid this, I turned instead to Google Scholar and searched for
+            something along the lines of <em>Holographic Displays: Defence Applications</em>. Through this, I came across a
+            paper by Matthew Hamilton et al. Matthew Hamilton is a professor at the <strong>Memorial University of Newfoundland (MUN)</strong>.
+        </p>
+
+        <p>
+            I will not claim to have understood everything in that paper. However, it referenced concepts and names I was already
+            familiar with—<em>Star Trek</em>, DARPA, and movies such as <em>Pushing Tin</em>. Because of that familiarity, I understood more than I had expected to, especially given that I was not accustomed to reading academic papers
+            at the time.
+        </p>
+
+        <p>
+            From there, I decided that I wanted to get to Memorial University of Newfoundland someday, with
+            the aim of meeting the author and, if possible, discussing this area of research with him. In 2021, I was admitted to
+            Memorial University of Newfoundland. While that goal has since been achieved, the curiosity that led me
+            there—particularly around emerging technologies and their use cases in defence applications—remains relevant to
+            how I think about science and technology.
+        </p>
+
+    </article>
+    <HR>
+    <section class="fs-5">
+            <p> In computer science, my interest is in data visualization. If physics can be bifurcated into two parts - 
             classical physics and modern physics, my interest is in the classical. 
             As you scroll down, you will see a few projects, either done in a group or individually by me, that reflect those interests.
           </p>
@@ -182,7 +271,7 @@ Arnob's Home Page
             </ul>
           </p>
 
-          
+          <h1>Experience</h1>
           
           <div class="container-fluid">
             <div class="row">
@@ -354,13 +443,29 @@ Arnob's Home Page
               </div>
               
             </div>
-            
+            <div class="row gx-5">
+              <div class="column col-md-5">
+                <div class="card">
+                  <img src="https://raw.githubusercontent.com/ArnobTurja2002Ghosh/ScheduleReader/refs/heads/main/docs/cd4.gif" class="card-img-top"></video>
+                
+                  <div class="card-body">
+                    <div class="card-text">
+                      <p>
+                        A web-based tool that converts schedule images (e.g., staff rosters) into structured tables using OCR, allows human review and tuning, and then syncs approved schedules to Google Calendar.
+                        This project focuses on correctness, human-in-the-loop review, and scalability, not just raw OCR accuracy.
+                      </p>
+                     </div>
+                    <a href="https://github.com/ArnobTurja2002Ghosh/BouncingShapes" class="btn btn-primary">Go to the repository</a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           
           
           
 
-        </section>
+    </section>
     <hr>
     <section>
       <h1>Summary of Qualifications</h1>

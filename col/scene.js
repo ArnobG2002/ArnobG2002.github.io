@@ -6,6 +6,7 @@ class Scene
         this.canvas=document.getElementById("myCanvas");
         this.entityManager=[];
         this.to_die=[];
+        this.currentFrame=0;
     }
     init()
     {
@@ -18,7 +19,7 @@ class Scene
         for(let i=0; i<arr1.length; i++){
             this.entityManager.push(new Entity('brown', [64*16+i*64-18, 64*5, 64, 64], arr1[i]))
         }
-        this.player=new Entity("rgb(60, 188, 252)", [64*2, 64*4, 32, 32])
+        this.player=new Entity("rgb(60, 188, 252)", [64*2, 64*4, 50, 55])
         this.player.sprite=document.getElementById('images');
 
         this.entityManager.push(this.player);
@@ -40,6 +41,7 @@ class Scene
         this.sCollision();
         //console.log(this.player.rect[1], this.player.velocity);
         this.sRender();
+        this.sAnimation();
     }
     deathUpdate(){
         for(let i in this.entityManager){
@@ -75,7 +77,22 @@ class Scene
                 }
             }
             else{
-                this.ctx.drawImage(i.sprite, i.rect[0], i.rect[1], i.rect[2], i.rect[3]);
+                this.ctx.save(); // prevent scale stacking
+                
+                if (i.transform === -1) {
+                    this.ctx.translate(i.rect[0] + i.rect[2], i.rect[1]);
+                    this.ctx.scale(-1, 1);
+                } else {
+                    this.ctx.translate(i.rect[0], i.rect[1]);
+                }
+                console.log('drawing sprite');
+                if((this.player.state=="standing" || this.player.state=="jumping")&& i==this.player){
+                    this.ctx.drawImage(i.sprite, 0,0, 64, 64);
+                }
+                else if(this.player.state=="running" && i==this.player){
+                    this.ctx.drawImage(i.sprite, 64*(Math.floor(this.currentFrame/10)%4), 0, 64, 64, 0, 0, 64, 64);   
+                }
+                this.ctx.restore();
             }
         }
     }
@@ -89,17 +106,19 @@ class Scene
         }
         if(this.player.right){
             this.player.velocity[0]+=0.2;
+            this.player.transform=1;
             console.log('p');
         }
         else if(this.player.left){
             this.player.velocity[0]-=0.2;
+            this.player.transform=-1;
             console.log('p');
         }
-        if(this.player.velocity[0]>20){
-            this.player.velocity[0]=20;
+        if(this.player.velocity[0]>5){
+            this.player.velocity[0]=5;
         }
-        else if(this.player.velocity[0]<-20){
-            this.player.velocity[0]=-20;
+        else if(this.player.velocity[0]<-5){
+            this.player.velocity[0]=-5;
         }
         if(!this.player.right && !this.player.left){
             this.player.velocity[0]=0;
@@ -121,6 +140,7 @@ class Scene
     }
     sCollision()
     {
+        this.player.state="jumping";
         let physics1=new Physics();
         for(let t1 of this.getBrown()){
             if(physics1.getOverlap(t1, this.player)[0]>0 && physics1.getOverlap(t1, this.player)[1]>0){
@@ -130,7 +150,12 @@ class Scene
                         //console.log(physics1.getPreviousOverlap(t1, this.player));
                         this.player.rect[1]-= physics1.getOverlap(t1, this.player)[1];
                         //console.log(physics1.getPreviousOverlap(t1, this.player));
-                        this.player.state='standing';
+                        if(this.player.velocity[0]==0){
+                            this.player.state='standing';
+                        }
+                        else if(this.player.velocity[0]!=0){
+                            this.player.state='running';
+                        }
                     }
                     else if(this.player.prevRect[1] > t1.rect[1]){
                         this.player.rect[1]+= physics1.getOverlap(t1, this.player)[1];
@@ -154,6 +179,26 @@ class Scene
                 
             }
         }
+    }
+    sAnimation()
+    {
+        if(this.player.state=="standing"){
+            let img =document.getElementById('stand');
+            img.src="./col/megaman/stand64.png";
+            this.currentFrame=0;
+        }
+        else if(this.player.state=="jumping"){
+            let img =document.getElementById('stand');
+            img.src="./col/megaman/air64.png";
+            this.currentFrame=0;
+        }
+        else if(this.player.state=="running"){
+            let img =document.getElementById('stand');
+            img.src="./col/megaman/run64.png";
+            this.currentFrame+=1;
+        }
+        this.player.sprite=document.getElementById('stand');
+        
     }
     userInput()
     {
