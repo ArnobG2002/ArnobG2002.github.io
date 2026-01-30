@@ -10,4 +10,8 @@ class Entity
         this.texture=texture;
         this.transform=1;
     }
+    hasCollision(){
+        if(this.rect.length==4){return true;}
+        return false;
+    }
 }
