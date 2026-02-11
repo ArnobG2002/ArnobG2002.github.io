@@ -81,16 +81,22 @@ Arnob's Home Page
 </div >
 </a> -->
 
-<img src="DSC_0027.JPG" align="right" alt="Sweet!!" width="30%" style="margin: 4rem;"> 
+<img src="DSC_0027.JPG" align="right" alt="Sweet!!" width="30%" style="margin: 5%"> 
 
 <!-- <img src="milton.gif" alt=""> -->
-<video width="60%" autoplay loop muted>
-  <source src="Milton.mp4" type="video/mp4" />
+<video id="milton" width="60%" autoplay muted>
+  <source src="ProperNouns.mp4" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
+<script>
+  setInterval(loop, 65000)
+  function loop(){
+    document.getElementById('milton').play();
+    console.log("playing");
+  }
+</script>
 
-
-<img src="DSC_0030.JPG" align="right" alt="Sweet!!" height="350"> 
+<img src="DSC_0030.JPG" align="right" alt="Sweet!!" width="40%" style="max-width: 20rem"> 
 
 
 
@@ -102,23 +108,21 @@ Arnob's Home Page
     <div id="content">
   
     <section class="fs-5">
-          <img class="rightimg" width="190px" src="6_n.jpg">
+          <img class="rightimg" width="50%" src="6_n.jpg" style="max-width: 15rem">
           <p class="red"> Looking to get hired. </p>
           <p> <a href="GArnob/index.html">Greetings to you!</a>  </p>
     </section>
     <article class="fs-5">
         <h1>Education</h1>
-        <div class="row position-relative">
-          <div class="col-7 fs-4">
+        <div>
             Summary: Bachelor of Science (Honours) in Computer Science (2021-2025)
-          </div>
-          <div class="col"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Memorial_University_of_Newfoundland_Logo.svg/1280px-Memorial_University_of_Newfoundland_Logo.svg.png" alt="" style="width: 10%; position:absolute; bottom: 0px;"></div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Memorial_University_of_Newfoundland_Logo.svg/1280px-Memorial_University_of_Newfoundland_Logo.svg.png" alt="" style="width: 10%; bottom: 0px;" >
         </div>
         
-        <h2>From an Edexcel Physics Paper to the Holodeck: A Personal Academic Curiosity</h2>
+        <h2>From an Edexcel Physics Paper to the Holodeck of MUN</h2>
 
         <div class="row">
-          <div class="col-8">
+          <div class="col-xl-8">
             <p>
               It was during my A Levels, while preparing for <strong>Edexcel Physics</strong>, that I encountered an unexpected introduction to <em>Star Trek</em>.
               I was working through past paper questions on Nuclear Physics when I came across a problem framed around the
@@ -138,7 +142,7 @@ Arnob's Home Page
         </div>
         
 
-        <div class="row"><div class="col-5">
+        <div class="row"><div class="col-xl-5">
           <a href="https://pmt.physicsandmathstutor.com/download/Biology/A-level/Past-Papers/Edexcel-IAL/Unit-5/January%202013%20INS%20-%20Unit%205%20Edexcel%20Biology%20A-level.pdf">
             <img src="Education/darpapassage.png" alt="" style="width: 100%;">
           </a>
