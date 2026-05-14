@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<TITLE> 
-Arnob's Home Page 
-</TITLE>
+<title>Computer Science Portfolio & Projects — Arnob Ghosh</title>
+<meta name="description" content="Explore Arnob Ghosh’s computer science portfolio — projects in web development, 
+Python, AI & OpenCV, plus resume, qualifications, and contact info.">
 
 <canvas id="myCanvas" width="1280" height="640" style="border:1px solid #000000; margin: auto;">
   Your browser does not support the HTML canvas tag.
 </canvas>
-
+<script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.min.js"></script>
+<link href='https://fonts.googleapis.com' rel='stylesheet'>
+<script>
+    function setup() {
+      let canvas = document.getElementById("myCanvas");
+      createCanvas(canvas.width, canvas.height, canvas)
+    }
+</script>
 <script src="col/Entity.js"></script>
 <script src="col/scene.js"></script>
 <script src="col/Physics.js"></script>
+
 <div style="display: none;">
   <img
     id="stand"
@@ -36,11 +45,11 @@ Arnob's Home Page
   <body onload="init1()"> </body>
 
 
-  <table style="width: 500px; margin-left: 10% ;" class="table d-none d-xl-block" >
+  <table style="width: 50%;" class="table d-none d-xl-block mx-auto" >
       <tr>
-        <th>KeyW - Jump</th>
-        <th>KeyA - Run left</th>
-        <th>KeyD - Run right</th>
+        <th class="px-5">KeyW - Jump</th>
+        <th class="px-5">KeyA - Run left</th>
+        <th class="px-5">KeyD - Run right</th>
       </tr>
   </table>
 
@@ -83,11 +92,13 @@ Arnob's Home Page
 
 <img src="DSC_0027.JPG" align="right" alt="Sweet!!" width="30%" style="margin: 5%"> 
 
-<!-- <img src="milton.gif" alt=""> -->
-<video id="milton" width="60%" autoplay muted>
-  <source src="ProperNouns.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
+<div style="width: 60%; position: relative;">
+  <video id="milton" width="100%" autoplay muted>
+    <source src="ProperNouns.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <a href="https://medium.com/@arnobg2002/proper-noun-explorer-5cfa6a77c163" style="position: absolute;top:0; left: 35%; font-size: 1.5rem;">About Proper Noun Explorer</a>
+</div>
 <script>
   setInterval(loop, 65000)
   function loop(){
@@ -461,7 +472,7 @@ Arnob's Home Page
         <img src="https://devopedia.org/images/article/45/8328.1526292163.svg" alt="" style="height: 100%;"/>
         <img src="https://www.pythontutorial.net/wp-content/uploads/2022/08/numpy-tutorial.svg" alt="" style="height: 100%;"/>
         <img src="https://opencv.org/wp-content/uploads/2022/05/logo.png" alt=""style="height: 295%;"/>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1200px-Bootstrap_logo.svg.png" alt="" style="height: 100%;"/>
+        <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow@2x.png" alt="" style="height: 100%;"/>
       </div>
     </section>
     <hr>

@@ -1,9 +1,12 @@
+// https://forum.defold.com/t/tilesheet-uneven-tiles-sizes-solved/9613 citing megaman tilesheet
 class Scene
 {
     constructor()
     {
         this.ctx=document.getElementById("myCanvas").getContext("2d");
         this.canvas=document.getElementById("myCanvas");
+        
+
         this.entityManager=[];
         this.to_die=[];
         this.currentFrame=0;
@@ -17,25 +20,42 @@ class Scene
             entity.sprite=image;
             this.entityManager.push(entity);
         }
-        let entity = new Entity('brown', [64*10, 64*5, 64, 64], 'M');
+        let entity = new Entity('brown', [64*10, 64*4, 64, 64], 'M');
         let image = document.getElementById('brick');
         entity.sprite=image;
         this.entityManager.push(entity);
-        let entity2 = new Entity('brown', [64*13-10, 64*5, 64, 64], 'I');
+        entity = new Entity('brown', [64*9, 64*5.52, 64, 64], 'M');
+        entity.sprite=image;
+        this.entityManager.push(entity);
+        entity = new Entity('brown', [64*10, 64*5.52, 64, 64], 'E');
+        entity.sprite=image;
+        this.entityManager.push(entity);
+        let entity2 = new Entity('brown', [64*13-10, 64*4, 64, 64], 'I');
         entity2.sprite=image;
         this.entityManager.push(entity2);
         let arr1=['r', 'o', 's.'];
         for(let i=0; i<arr1.length; i++){
-            let entity = new Entity('brown', [64*16+i*64-18, 64*5, 64, 64], arr1[i]);
+            let entity = new Entity('brown', [64*16+i*64-18, 64*4, 64, 64], arr1[i]);
             let image = document.getElementById('brick');
             image.src="./col/mario/brick.png";
             entity.sprite=image;
             this.entityManager.push(entity)
         }
+        arr1=['A','M', 'a', 'n'];
+        for(let i=0; i<arr1.length; i++){
+            let entity = new Entity('brown', [64*12+i*64, 64*5.52, 64, 64], arr1[i]);
+            let image = document.getElementById('brick');
+            image.src="./col/mario/brick.png";
+            entity.sprite=image;
+            this.entityManager.push(entity);
+        }
         this.player=new Entity("rgb(60, 188, 252)", [64*2, 64*4, 50, 55])
         this.player.sprite=document.getElementById('images');
         this.userInput();
         this.entityManager.push(this.player);
+        console.log(this.entityManager);
+
+        
     }
     getBrown(){
         let t1=[];
@@ -73,10 +93,22 @@ class Scene
         this.ctx.fillStyle="rgb(255, 255, 255)";
 
         this.ctx.font = 34 + 'pt Arial';
-        this.ctx.fillText("super", 64*11, 64*5);
+        
 
+        for(let i of this.entityManager){
+            if(i.sprite){
+                if(i.sprite.id=="brick"){
+                    this.ctx.fillText("super", 64*11, 64*4);
+                    break;
+                }
+            }
+        }
         this.ctx.font = 64 + 'pt Arial';
-        this.ctx.fillText("ARNOB", 64*11, 64*6);
+
+       
+        
+        this.ctx.fillText("ARNOB", 64*11, 64*5);
+        this.ctx.fillText("GHOSH", 64*11, 64*6.5);
         for(let i of this.entityManager){
             if(i.sprite==null){
                 this.ctx.fillStyle=i.color;
@@ -114,7 +146,7 @@ class Scene
                         this.ctx.fillStyle="rgb(0, 0, 0)";
                         this.ctx.font = 60 + 'pt Arial';
                         let tsize = this.ctx.measureText(i.texture).width / 2;
-                        this.ctx.fillText(i.texture, i.rect[0] + 0.5*i.rect[2] -tsize, i.rect[1]+i.rect[3]);
+                        this.ctx.fillText(i.texture, i.rect[0] + 0.5*i.rect[2] -tsize, i.rect[1]+0.95*i.rect[3]);
                     }
                     if(i.state=="explosion"){
                         if(i.currentFrame/2>=6144/128){
