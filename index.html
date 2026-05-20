@@ -1,491 +1,759 @@
 <!DOCTYPE html>
-<title>Computer Science Portfolio & Projects — Arnob Ghosh</title>
-<meta name="description" content="Explore Arnob Ghosh’s computer science portfolio — projects in web development, 
-Python, AI & OpenCV, plus resume, qualifications, and contact info.">
-
-<canvas id="myCanvas" width="1280" height="640" style="border:1px solid #000000; margin: auto;">
-  Your browser does not support the HTML canvas tag.
-</canvas>
-<script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.min.js"></script>
-<link href='https://fonts.googleapis.com' rel='stylesheet'>
-<script>
-    function setup() {
-      let canvas = document.getElementById("myCanvas");
-      createCanvas(canvas.width, canvas.height, canvas)
-    }
-</script>
-<script src="col/Entity.js"></script>
-<script src="col/scene.js"></script>
-<script src="col/Physics.js"></script>
-
-<div style="display: none;">
-  <img
-    id="stand"
-    src="./col/megaman/stand64.png"/>
-    <img src="./col/mario/ground.png" alt="" id="ground"/>
-    <img src="./col/mario/brick.png" alt="" id="brick"/>
-    <img src="./col/megaman/explosion128.png" alt="" id="explosion"/>
-
-  <div class="animatedSprite" id="run"></div>
-</div>
-<script>
-  init1 = function() {
-      
-      let scene1= new Scene();
-      scene1.init();
-      // set up the main loop
-      setInterval(update, 1000 / 60);
-      function update() {
-          scene1.update();
-      }
-  }
-</script>
-  
-  <body onload="init1()"> </body>
-
-
-  <table style="width: 50%;" class="table d-none d-xl-block mx-auto" >
-      <tr>
-        <th class="px-5">KeyW - Jump</th>
-        <th class="px-5">KeyA - Run left</th>
-        <th class="px-5">KeyD - Run right</th>
-      </tr>
-  </table>
-
-  <style>
-    @media screen and (min-width: 0px) {
-      canvas:nth-last-of-type(1){display: none;}
-    }
-    @media screen and (min-width: 1280px) {
-      canvas:nth-last-of-type(1){display: block;}
-    }
-    
-  </style>
-<BR>
-
-
+<html lang="en" data-theme="dark">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Arnob's Homepage</title>
-    <link rel="stylesheet" href="style1.css">
-    <link rel="stylesheet" href="style2.css">
-     <!-- Bootstrap -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous" defer></script>
- 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- ===== Primary SEO ===== -->
+  <title>Arnob Ghosh — Software Developer · Portfolio</title>
+  <meta name="description" content="Software developer building data-visualization tools, computer-vision pipelines, and API integrations. BSc (Honours) Computer Science, Memorial University of Newfoundland." />
+  <meta name="author" content="Arnob Ghosh" />
+  <meta name="keywords" content="Arnob Ghosh, software developer, full-stack engineer, computer vision, OpenCV, FastAPI, Python, Memorial University of Newfoundland, MUN, portfolio, Newfoundland software developer, OCR, Google Calendar API, Atlassian, Confluence automation, ChArUco" />
+  <link rel="canonical" href="https://arnobturja2002ghosh.github.io/" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="theme-color" content="#0b0f17" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f7f8fb" media="(prefers-color-scheme: light)" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+
+  <!-- ===== Open Graph (Facebook / LinkedIn previews) ===== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Arnob Ghosh — Portfolio" />
+  <meta property="og:url" content="https://arnobturja2002ghosh.github.io/" />
+  <meta property="og:title" content="Arnob Ghosh — Software Developer · Portfolio" />
+  <meta property="og:description" content="Software developer building data-visualization tools, computer-vision pipelines, and API integrations. BSc (Honours) Computer Science, MUN." />
+  <meta property="og:image" content="https://arnobturja2002ghosh.github.io/DSC_0027.JPG" />
+  <meta property="og:image:alt" content="Portrait of Arnob Ghosh" />
+  <meta property="og:locale" content="en_CA" />
+
+  <!-- ===== Twitter Card ===== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Arnob Ghosh — Software Developer" />
+  <meta name="twitter:description" content="Software developer building data-visualization tools, computer-vision pipelines, and API integrations." />
+  <meta name="twitter:image" content="https://arnobturja2002ghosh.github.io/DSC_0027.JPG" />
+  <meta name="twitter:image:alt" content="Portrait of Arnob Ghosh" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap (kept for legacy components) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- Site theme -->
+  <link rel="stylesheet" href="style3.css">
+
+  <!-- Apply saved theme before paint to avoid flash -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') {
+          document.documentElement.setAttribute('data-theme', t);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- ===== Schema.org JSON-LD: Person ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Arnob Ghosh",
+    "givenName": "Arnob",
+    "familyName": "Ghosh",
+    "jobTitle": "Software Developer",
+    "description": "Software developer building data-visualization tools, computer-vision pipelines, and API integrations.",
+    "url": "https://arnobturja2002ghosh.github.io/",
+    "image": "https://arnobturja2002ghosh.github.io/DSC_0027.JPG",
+    "email": "mailto:arnobg2002@gmail.com",
+    "telephone": "+1-709-219-3188",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Memorial University of Newfoundland",
+      "url": "https://www.mun.ca/"
+    },
+    "knowsAbout": [
+      "Software Development",
+      "Computer Vision",
+      "Data Visualization",
+      "Python",
+      "FastAPI",
+      "OpenCV",
+      "REST API Integration",
+      "OCR",
+      "Workflow Automation",
+      "Google Calendar API",
+      "Atlassian Confluence"
+    ],
+    "sameAs": [
+      "https://github.com/ArnobTurja2002Ghosh",
+      "https://www.linkedin.com/in/arnob-ghosh-13b380214/",
+      "https://medium.com/@arnobg2002"
+    ]
+  }
+  </script>
+
+  <!-- ===== Schema.org JSON-LD: WebSite (enables SiteLinks Searchbox if added later) ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Arnob Ghosh — Portfolio",
+    "url": "https://arnobturja2002ghosh.github.io/",
+    "author": {
+      "@type": "Person",
+      "name": "Arnob Ghosh"
+    }
+  }
+  </script>
 </head>
 
-<!-- <a href="https://github.com/ArnobTurja2002Ghosh">
-<div style="width: 100%; height: 360px; position: relative; overflow: hidden; display: flex;">
+<body>
 
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVIWOvmrOyZRY40NEKAdC_JBiToHB7X2oCWA&s" alt="Arnob" style="position: relative;">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBvnApI6b5nBZvROHvdP3N18Leth39x0OREQ&s" alt="" style="position: relative; left: -350px; z-index: -1;" class="d-none d-sm-block">
-    <img src="https://img-cdn.publive.online/fit-in/1200x675/filters:format(webp)/socialsamosa/media/media_files/2025/07/03/eeshita-ghosh-2025-07-03-11-25-30.jpg" alt="" style="height: 300%; position: relative; left: -1670px; top: -150px; z-index: -2;" class="d-none d-lg-block">
-    <div style="font-size: 7em; height: 50%; background-color: #000000; color: #fff; position: relative; left: -2250px;" class="d-none d-lg-block">2002</div>
-    <img src="https://cdn-1.webcatalog.io/catalog/github/github-icon-filled-256.png?v=1750639266901" alt="" style="font-size: 7em; height: 50%; background-color: #000000; color: #fff; position: relative; left: -2250px; top: 35%">
-</div >
-</a> -->
+  <!-- ============== NAVBAR ============== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#top">ArnobG2002<span class="dot">.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#qualifications">Skills</a>
+        <a href="#contact">Contact</a>
+        <span class="theme-wrap">
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          </button>
+        </span>
+      </div>
+    </div>
+  </nav>
 
-<img src="DSC_0027.JPG" align="right" alt="Sweet!!" width="30%" style="margin: 5%"> 
+  <main id="top">
 
-<div style="width: 60%; position: relative;">
-  <video id="milton" width="100%" autoplay muted>
-    <source src="ProperNouns.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-  <a href="https://medium.com/@arnobg2002/proper-noun-explorer-5cfa6a77c163" style="position: absolute;top:0; left: 35%; font-size: 1.5rem;">About Proper Noun Explorer</a>
-</div>
-<script>
-  setInterval(loop, 65000)
-  function loop(){
-    document.getElementById('milton').play();
-    console.log("playing");
-  }
-</script>
-
-<img src="DSC_0030.JPG" align="right" alt="Sweet!!" width="40%" style="max-width: 20rem"> 
-
-
-
-<HR>
-
-
-
-<main class="ms-2 me-2" style="width: 96%;">
-    <div id="content">
-  
-    <section class="fs-5">
-          <img class="rightimg" width="50%" src="6_n.jpg" style="max-width: 15rem">
-          <p class="red"> Looking to get hired. </p>
-          <p> <a href="GArnob/index.html">Greetings to you!</a>  </p>
-    </section>
-    <article class="fs-5">
-        <h1>Education</h1>
-        <div>
-            Summary: Bachelor of Science (Honours) in Computer Science (2021-2025)
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Memorial_University_of_Newfoundland_Logo.svg/1280px-Memorial_University_of_Newfoundland_Logo.svg.png" alt="" style="width: 10%; bottom: 0px;" >
+    <!-- ============== HERO ============== -->
+    <section class="container hero reveal" id="about">
+      <div>
+        <span class="eyebrow">Available for work</span>
+        <h1>Hi, I'm <span class="grad">Arnob Ghosh</span><br/>Software Developer.</h1>
+        <p class="lead">
+          I build data-visualization tools, computer-vision pipelines, and API integrations that ship. BSc (Honours), Computer Science — Memorial University of Newfoundland. Equal parts curiosity about emerging tech and discipline about making it actually useful.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View Projects →</a>
+          <a href="GArnob/index.html" class="btn">Greetings</a>
+          <a href="#contact" class="btn">Get in touch</a>
         </div>
-        
-        <h2>From an Edexcel Physics Paper to the Holodeck of MUN</h2>
+      </div>
+      <div class="hero-portrait">
+        <img src="DSC_0027.JPG" alt="Arnob Ghosh portrait" />
+      </div>
+    </section>
 
-        <div class="row">
-          <div class="col-xl-8">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <!-- ============== FEATURED VIDEO ============== -->
+          <section class="reveal" style="width: 100%;">
+            <div class="section-header">
+              <span class="label">// featured</span>
+              <h2>Proper Noun Explorer</h2>
+            </div>
+            <div class="video-wrap">
+              <video id="milton" autoplay muted loop playsinline>
+                <source src="ProperNouns.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay">
+                <a href="https://medium.com/@arnobg2002/proper-noun-explorer-5cfa6a77c163" rel="me noopener" target="_blank">Read the write-up on Medium →</a>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="col">
+          <!-- ============== QUALIFICATIONS ============== -->
+          <section class="container reveal" id="qualifications">
+            <div class="section-header" style="padding-top: 7rem;">
+              <span class="label">// skills</span>
+              <h2>Summary of Qualifications</h2>
+            </div>
+            <div class="tech-strip" style="margin-bottom: 1rem;">
+              <img src="https://angular.dev/assets/images/press-kit/angular_icon_gradient.gif" alt="Angular" />
+              <img src="https://devopedia.org/images/article/45/8328.1526292163.svg" alt="Pandas" />
+              <img src="https://www.pythontutorial.net/wp-content/uploads/2022/08/numpy-tutorial.svg" alt="NumPy" />
+              <span class="opencv-wrap" title="OpenCV — hover to reveal" aria-label="OpenCV">
+                <img class="opencv-logo" src="https://opencv.org/wp-content/uploads/2022/05/logo.png" alt="OpenCV" />
+              </span>
+              <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow@2x.png" alt="Bootstrap" />
+            </div>
+            <p style="max-width: 100%; font-size: 1.05rem; color: var(--text-soft);">
+              With a strong foundation in modern web development, I specialize in building dynamic, responsive applications that deliver seamless user experiences. My expertise includes crafting interactive front-end solutions and leveraging powerful data-analysis techniques to extract meaningful insights. I thrive in developing computer-vision applications and implementing machine-learning workflows to solve real-world problems. Whether designing sleek, mobile-friendly interfaces or processing complex datasets, I bring a versatile skill set that bridges the gap between data science and practical software development.
+            </p>
+
+            
+          </section>
+        </div>
+      </div>
+    </div>
+    
+    
+
+    
+    <hr/>
+
+    <!-- ============== EDUCATION NARRATIVE ============== -->
+    <article class="container reveal" id="education">
+      <div class="section-header">
+        <span class="label">// education</span>
+        <h2>From an Edexcel Physics Paper to the Holodeck of MUN</h2>
+      </div>
+
+      <div style="margin-bottom: 1.5rem;">
+        <span class="school-badge">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Memorial_University_of_Newfoundland_Logo.svg/1280px-Memorial_University_of_Newfoundland_Logo.svg.png" alt="MUN logo" />
+          BSc (Honours), Computer Science — 2021–2025
+        </span>
+      </div>
+
+      <div class="story">
+        <div class="row-split">
+          <div class="prose">
             <p>
               It was during my A Levels, while preparing for <strong>Edexcel Physics</strong>, that I encountered an unexpected introduction to <em>Star Trek</em>.
               I was working through past paper questions on Nuclear Physics when I came across a problem framed around the
               <em>Starship Enterprise</em>. That was my first exposure to the franchise, and it immediately stood out to me.
             </p>
             <p>
-            As I explored the series further, my interest gradually narrowed to the concept of the Holodeck.
-            I began to wonder whether anything resembling such a system existed in reality, even as part of
-            <strong>emerging technologies</strong>. This curiosity led me to the <a href="https://en.wikipedia.org/wiki/Holographic_display">Wikipedia page on
-            holographic displays</a>. As I read through it, I became increasingly convinced that such technologies
-            could have meaningful <strong>use cases</strong>, particularly in the context of
-            <strong>defence applications</strong>. Surprisingly, however, there was no explicit mention of the military or
-            defence sector anywhere on the page.
+              As I explored the series further, my interest gradually narrowed to the concept of the Holodeck.
+              I began to wonder whether anything resembling such a system existed in reality, even as part of
+              <strong>emerging technologies</strong>. This curiosity led me to the <a href="https://en.wikipedia.org/wiki/Holographic_display">Wikipedia page on
+              holographic displays</a>. As I read through it, I became increasingly convinced that such technologies
+              could have meaningful <strong>use cases</strong>, particularly in the context of
+              <strong>defence applications</strong>. Surprisingly, however, there was no explicit mention of the military or
+              defence sector anywhere on the page.
             </p>
           </div>
-          <div class="col"><img src="Education/startrekquestion.png" alt="" style="width: 100%;"></div>
+          <div>
+            <img src="Education/startrekquestion.png" alt="Edexcel Physics past paper question featuring the Starship Enterprise" />
+          </div>
         </div>
-        
 
-        <div class="row"><div class="col-xl-5">
-          <a href="https://pmt.physicsandmathstutor.com/download/Biology/A-level/Past-Papers/Edexcel-IAL/Unit-5/January%202013%20INS%20-%20Unit%205%20Edexcel%20Biology%20A-level.pdf">
-            <img src="Education/darpapassage.png" alt="" style="width: 100%;">
-          </a>
-        </div>
-        <div class="col">
-          <p>
+        <div class="row-split reverse">
+          <div>
+            <a href="https://pmt.physicsandmathstutor.com/download/Biology/A-level/Past-Papers/Edexcel-IAL/Unit-5/January%202013%20INS%20-%20Unit%205%20Edexcel%20Biology%20A-level.pdf">
+              <img src="Education/darpapassage.png" alt="DARPA passage from an Edexcel Biology A-Level past paper" />
+            </a>
+          </div>
+          <div class="prose">
+            <p>
               There was, however, one name that caught my attention: DARPA. I recognised the acronym only because
               I had once skimmed through a Biology A Level Unit 5 past paper while deciding whether to take Biology.
               That paper mentioned DARPA in the context of research into creating "a fourth group" of food, in addition to
-              proteins, carbohydrates, and fats. I ultimately did not take Biology—largely because the DARPA article was the only part of the
-              paper I found interesting—but it left a lasting impression. From that article, I learned that DARPA stands for the
+              proteins, carbohydrates, and fats. I ultimately did not take Biology — largely because the DARPA article was the only part of the
+              paper I found interesting — but it left a lasting impression. From that article, I learned that DARPA stands for the
               <i>U.S. Defense Advanced Research Projects Agency</i>.
-          </p>
-
-          <p>
+            </p>
+            <p>
               This discovery reinforced my intuition that holographic display systems could have non-obvious
               defence applications. Wanting to learn more, I followed the reference links and found that, at the
               time, the available information was limited to a brief mention of DARPA sponsoring early research into
               battlespace visualisation around 2011. In those days, Wikipedia was effectively my most reliable
               source of information. If I could not find further details there, I was unsure where else to look.
-          </p>
-        </div>
+            </p>
+          </div>
         </div>
 
-        
-
-        <p>
+        <div class="prose">
+          <p>
             A general Google search felt unreliable; terms such as <em>holography</em> often attract speculative or fictional
             material presented as fact. To avoid this, I turned instead to Google Scholar and searched for
             something along the lines of <em>Holographic Displays: Defence Applications</em>. Through this, I came across a
             paper by Matthew Hamilton et al. Matthew Hamilton is a professor at the <strong>Memorial University of Newfoundland (MUN)</strong>.
-        </p>
-
-        <p>
+          </p>
+          <p>
             I will not claim to have understood everything in that paper. However, it referenced concepts and names I was already
-            familiar with—<em>Star Trek</em>, DARPA, and movies such as <em>Pushing Tin</em>. Because of that familiarity, I understood more than I had expected to, especially given that I was not accustomed to reading academic papers
-            at the time.
-        </p>
-
-        <p>
+            familiar with — <em>Star Trek</em>, DARPA, and movies such as <em>Pushing Tin</em>. Because of that familiarity, I understood more than I had expected to, especially given that I was not accustomed to reading academic papers at the time.
+          </p>
+          <p>
             From there, I decided that I wanted to get to Memorial University of Newfoundland someday, with
             the aim of meeting the author and, if possible, discussing this area of research with him. In 2021, I was admitted to
             Memorial University of Newfoundland. While that goal has since been achieved, the curiosity that led me
-            there—particularly around emerging technologies and their use cases in defence applications—remains relevant to
+            there — particularly around emerging technologies and their use cases in defence applications — remains relevant to
             how I think about science and technology.
-        </p>
-
+          </p>
+        </div>
+      </div>
     </article>
-    <HR>
-    <section class="fs-5">
-            <p> In computer science, my interest is in data visualization. If physics can be bifurcated into two parts - 
-            classical physics and modern physics, my interest is in the classical. 
-            As you scroll down, you will see a few projects, either done in a group or individually by me, that reflect those interests.
-          </p>
-          <p>
-            For any of the group projects mentioned in this page, I do not expect anyone to be credulous enough to believe my contribution
-            from my mere words. In that case, the commit history of the repository should corroborate the veracity of the claims I make 
-            about my contribution to a project. 
-          </p>
-          <p>
-            Although I had no intention to equivocate, if the description of any of my projects seems equivocal, please contact me for clarification.
-            My contact address is at the bottom of this page. 
-          </p>
 
-          <p> Check out <A HREF=https://github.com/ArnobTurja2002Ghosh/SetCover>my biggest Python project</A> till now, where I tried to implement almost all my concepts about the Tree data structure. 
-            It has an exponential runtime but ensures optimal solutions -unlike genetic algorithms for which I prefer Java.
-            The tree in the project was written from scratch and I am not sure if Python offers a built-in tree,
-            but there are many built-in data structures that can be used by importing different Python libraries.
-            One of those libraries is pandas which I use for dataframes and series. A few projects I made while using pandas are:
-            <ul>
-              <li><A HREF=https://github.com/ArnobTurja2002Ghosh/gistemp>gistemp</A> 
-                <ul>
-                 <li> Visualised data from Nasa to histograms. </li>
-                 <li> Used two matplotlib modules for the histograms: 
-                  <ul> <li>pyplot (the most common matplotlib module)</li>
-                       <li>colors</li>
-                  </ul>
-                 </li>
-                </ul>
-              </li>
-              <li> <A HREF=https://github.com/ArnobTurja2002Ghosh/Cary>Cary</A>
-                <ul>
-                  <li> Visualised three datasets about the town of Cary of North Carolina in one notebook.</li>
-                  <li> Interestingly noticed that Cary Arts Centre is not counted as a point of interest. Why? </li>
-                </ul>
-              </li>
-              <li><A HREF=https://github.com/ArnobTurja2002Ghosh/pca>pca</A>
-                <ul>
-                    <li> In February 2024, I came across a paper in ReasearchGate <i>Evaluation of Breast Cancer Tumor Classification with Unconstrained Functional Networks Classifier</i> and tried to recreate the Figure 3 and Figure 5. </li>
-                    <li> While trying to recreate Figure 3 I discovered that the axes are mislabelled - neither the x-axis represents the Mean Radius, nor does the y-axis represent Mean Texture. 
-                        Instead, if I take x-axis to represent mean texture and y-axis to represent mean perimeter, my figure looks the same as their figure-3.</li>
-                    <li> When it came to Figure 5, I completely lost what exactly they did with the data. Firstly, smoothness can never be negative. 
-                        Secondly, if you look at the data and take a peek of the smoothness columns, smoothness tends to be between 0 and 1.
-                        In contrast to them, Figure 5 'worst mean smoothness' has a higher range and can have negative values. 
-                        My guess about what they did is that they plotted the scaled values of the smoothness_worst column in the z-axis.
-                      <ul>
-                        <li>But even with the scaled values, a z-limit of -3 to 4 should be enough. Why did they choose to extend it to -4 to 6?</li>
-                        <li>Also, why are x and y axis plotted as original data, but z-axis as scaled data? If one says that it is because smoothness_worst has too low range, I would say that area_worst has too high range.</li>
-                      </ul>
-                        I am still working on the above questions 
-                    </li>
-                </ul>
-            </li>
-            </ul>
-          </p>
+    <hr/>
 
-          <h1>Experience</h1>
-          
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col">            
-                <div class="card" style="width: 25rem;">
-                  <img class="card-img-top" src="imgs1/Screenshot195835.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <p class="card-text"><A href="https://github.com/tabannum-lit/">Tabannum</A> and I developed a tic-tac-toe game using the Brython library of Python. 
-                      This project is available upon request only, so please feel free to contact any of us. 
-                      My contact information is at the end of this page.
-                    </p>
-                    
-                  </div>
-                </div>
-              </div>
-  
-              <div class="col"> 
-                <div class="card" style="width: 25rem">
-                  <div class="card-body">
-                    <p class="card-text">
-                      I have written search algorithms like <a HREF=https://github.com/ArnobTurja2002Ghosh/Search>BFS, DFS,</a> <a HREF=https://github.com/ArnobTurja2002Ghosh/Search2>A*,</a> <a HREF=https://github.com/ArnobTurja2002Ghosh/IDDFS>IDDFS</a> without any use of recursion, using Javascript. 
-                      However, they are just the rough algorithms and cannot be implemented (you cannot simply download and run the repositories) since the environment (or map), configuration etc. that these algorithms require as inputs, have not been written by me and so are not there in the repositories.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col col-md-5">
-                <div class="card">
-                  <img class="card-img-top" src="https://github.com/ArnobTurja2002Ghosh/openCVChArUco/blob/main/detectedMarkersDrawn_calibrate/12.png?raw=true" alt="12.png">
-                  <div class="card-body">
-                      <p class="card-text">
-                        I built this Python-based system to elucidate abstruse computer vision topics, like camera calibration and pose estimation, using OpenCV Contrib 4.8.1 (any other version of OpenCV may be incongruous with the system). 
-                        The system is augmented with auxiliary image processing tools for autonomously cropping, resizing, undistorting, converting raw to color, converting color to grayscale and converting grayscale to binary. 
-                      </p>
-                      <a href="https://github.com/ArnobTurja2002Ghosh/openCVChArUco" class="btn btn-primary">Go to the repository</a>
-                      <a href="https://ArnobTurja2002Ghosh.github.io/openCVChArUco/web" class="btn btn-secondary">Project page</a>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="row gx-5">
-              <div class="col col-md-6">
-                  <div class="card">
-                    <img class="card-img-top" src="imgs1/croc_copy.jpg" alt="Card image cap">
-                    <div class="card-body">
-                      <p class="card-text">
-                        <p>
-                        If you want to see a Javascript project that you can run - or may I say, "play" - <a HREF=https://github.com/zawadman>Zawad Mutawassit</a> and I, in a project called "ProjectAI", developed a game which we informally call "FishFrenz".
-                        Instructions about how you can interact in the game is provided in the README.
-                        The game does not contain any GUI: when the game ends, the program crashes, but you can restart the game by simply reloading the browser where you are playing.  
-                        </p>
-                        <p>
-                          FishFrenz story: It is a snowy night. Your enemy - the crocodile - is trying to eat your fish friends.
-                          The fish are capricious; they take erratic turns in every frame; you can never be sure which direction a fish will be travelling.
-                          The voracious enemy targets one of the fish in the water. 
-                          The truculent crocodile will breach the border of the territory of fish because the 
-                          direction of the targetted fish is the catalyst that gives the enemy its direction of motion.
-                          The enemy thinks that because it is hard to see in snow, let alone at night, it cannot get shot by you, so it will succeed.
-                          Only your winning can disabuse the crocodile.
-                        </p>
-                      </p>
-                      <a href="https://github.com/ArnobTurja2002Ghosh/ProjectAI" class="btn btn-primary">Go to the repository</a>
-                      <a href="https://zawadman.github.io/fishFrenz/" class="btn btn-secondary">Play FishFrenz</a>
-                    </div>
-                  </div>
-              </div>
-
-              <div class="column col-md-5">
-                  <div class="card">
-                    <img class="card-img-top" src="imgs1/Screenshot132701.jpg" alt="Card image cap">
-                    <div class="card-body">
-                      <p class="card-text"> 
-                        <a href="https://github.com/Catalina430">Github user Catalina430</a> created a game analogous to the top-down multi-directional 
-                        shoot 'em up known as <a href="https://en.wikipedia.org/wiki/Geometry_Wars">Geometry Wars</a>. 
-                        When I found that <a href = "https://github.com/Catalina430/Geometry-Wars">his project</a> was made using SFML,
-                        the same library with which I made my first C++ project, 
-                        I worked on it with alacrity, intending to incorporate some GUIs to the game, 
-                        but ended up making changes to the SFML part of the project too. 
-                        I cannot guarantee that the result of the changes is better than the original one by Catalina430, maybe he would argue that I 
-                        exacerbated his project, so I did not fork-and-contribute,
-                        in lieu I claimed mine to be a disparate project and named it Project Catalina430
-                        (more details and updates about the project are in the README of the repository).
-                      </p>
-                      <a href="https://github.com/ArnobTurja2002Ghosh/Catalina430" class="btn btn-primary">Go to the repository</a>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="column col-md-10">
-                      <div class="card">
-                        <img class="card-img-top" src="imgs1/Screenshot141954.jpg" alt="Card image cap">
-                        <div class="card-body">
-                          <p class="card-text">
-                            Check out my first C++ project using SFML and IMGui, inspired from a Youtube tutorial.
-                          </p>
-                          <a href="https://github.com/ArnobTurja2002Ghosh/BouncingShapes" class="btn btn-primary">Go to the repository</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              </div>  
-            </div>
-            
-            <div class="row gx-5">
-              <div class="column col-md-6">
-                <div id="carouselExampleSlidesOnly" class="carousel slide w-100" data-bs-ride="carousel">
-                  <div class="carousel-inner">
-                    
-                    <div class="carousel-item active">
-                      <img class="d-block w-100" src="imgs1/Screenshot 2024-11-05 165407.jpg" alt="...">
-                      <div class="text-dark carousel-caption">
-                        <h5 class="text-center">JavaSwing1</h5>
-                        <p class="d-none d-sm-block"> 
-                          This Java Swing project allows you to fill a grid with tiles of different shapes and colors.
-                          The biggest challenge in this project was to ensure that the user cannot place a tile on the top of another
-                          - that is, there is no overlap of tiles. As long as there is no overlap, you can place your tile anywhere in the 9*9 grid. 
-                          Initially, the grid is white and empty, as you can see in this image. A tile is chosen by clicking the "choose shape" button. 
-                          After choosing a tile, hover over the grid to select a position (or to check if the tile can be placed in that position). 
-                          Click on the grid to place your tile.
-                        </p>
-                        <a href="https://github.com/ArnobTurja2002Ghosh/JavaSwing1" class="btn btn-primary">Go to the repository</a>
-                      
-                      </div>
-                    </div>
-    
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="imgs1/Screenshot 2024-10-30 024532.jpg" alt="...">
-                      <div class="text-dark">
-                        <h5 class="text-center">JavaSwing1</h5>
-                        <p class=""> 
-                          This Java Swing project allows you to fill a grid with tiles of different shapes and colors.
-                          The biggest challenge in this project was to ensure that the user cannot place a tile on the top of another
-                          - that is, there is no overlap of tiles. As long as there is no overlap, you can place your tile anywhere in the 9*9 grid. 
-                          A tile is selected using the interface you can see in the above image. The orientation of a shape can be changed using the "rotate" button on it.
-                          Intuitively, "select" buttons are to select a shape and color. Once a shape and color is selected, you will be taken to the grid where you can place the tile of your selected shape, color and rotation.
-                        </p>
-                        <a href="https://github.com/ArnobTurja2002Ghosh/JavaSwing1" class="btn btn-primary">Go to the repository</a>
-                      
-                      </div>
-                    </div>
-    
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="imgs1/Screenshot 2024-10-30 022641.jpg" alt="...">
-                      
-                    </div>
-                  </div>
-    
-                  <a class="carousel-control-prev" href="#carouselExampleSlidesOnly" role="button" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  </a>
-                  <a class="carousel-control-next" href="#carouselExampleSlidesOnly" role="button" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  </a>
-    
-                </div>
-              </div>
-              <div class="column col-md-6">
-                
-                <div class="card">
-                  <img src="imgs1/AddUserToConfluence/ProjectSummary.png" alt="" class="card-img-top"/>
-                  <div class="card-body">
-                    <div class="card-text">
-                      I engineered two interoperable automation systems that overcome structural constraints in enterprise APIs by introducing a strategic proxy layer. 
-                      The first resolves Google Apps Script’s immutable User-Agent limitation, which triggers Discord’s Cloudflare-enforced 40333 rejection, by routing requests through a FastAPI proxy enriched with compliant headers and exposed securely via ngrok. 
-                      Parallelly, I developed a Confluence administration framework that programmatically orchestrates user onboarding and deprovisioning through Atlassian’s organization-level APIs, navigating dual authentication models and mapping human-readable groups to internal identifiers. 
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-            </div>
-            <div class="row gx-5">
-              <div class="column col-md-5">
-                <div class="card">
-                  <img src="https://raw.githubusercontent.com/ArnobTurja2002Ghosh/ScheduleReader/refs/heads/main/docs/cd4.gif" class="card-img-top"></video>
-                
-                  <div class="card-body">
-                    <div class="card-text">
-                      <p>
-                        A web-based tool that converts schedule images (e.g., staff rosters) into structured tables using OCR, allows human review and tuning, and then syncs approved schedules to Google Calendar.
-                        This project focuses on correctness, human-in-the-loop review, and scalability, not just raw OCR accuracy.
-                      </p>
-                     </div>
-                    <a href="https://github.com/ArnobTurja2002Ghosh/BouncingShapes" class="btn btn-primary">Go to the repository</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          
-          
-
-    </section>
-    <hr>
-    <section>
-      <h1>Summary of Qualifications</h1>
-      <p style="font-size: 1.4em;">
-        With a strong foundation in modern web development, I specialize in building dynamic, responsive applications that deliver seamless user experiences. 
-        My expertise includes crafting interactive front-end solutions and leveraging powerful data analysis techniques to extract meaningful insights. 
-        I thrive in developing computer vision applications and implementing machine learning workflows to solve real-world problems. 
-        Whether it's designing sleek, mobile-friendly interfaces or processing complex datasets, I bring a versatile skill set that bridges the gap between data science and practical software development. 
-        My approach combines analytical rigor with clean, efficient coding practices to create robust solutions across different domains.
-
+    <!-- ============== WORK EXPERIENCE ============== -->
+    <section class="container reveal" id="experience">
+      <div class="section-header">
+        <span class="label">// experience</span>
+        <h2>Work Experience</h2>
+      </div>
+      <p style="max-width: 70ch; color: var(--text-muted); margin-bottom: 2rem;">
+        Independently scoped, built, and shipped — engagements where I owned the design and delivery end-to-end. Click any thumbnail to enlarge.
       </p>
-      
-      <div style="width: 100%; height: calc(100vw / 10);; overflow: hidden; display: flex; align-items: flex-start;">
-        <img src="https://angular.dev/assets/images/press-kit/angular_icon_gradient.gif" alt="Angular" style="height: 100%; ">
-        <img src="https://devopedia.org/images/article/45/8328.1526292163.svg" alt="" style="height: 100%;"/>
-        <img src="https://www.pythontutorial.net/wp-content/uploads/2022/08/numpy-tutorial.svg" alt="" style="height: 100%;"/>
-        <img src="https://opencv.org/wp-content/uploads/2022/05/logo.png" alt=""style="height: 295%;"/>
-        <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow@2x.png" alt="" style="height: 100%;"/>
+
+      <div class="exp-list">
+
+        <article class="exp-item">
+          <div class="exp-period">Dec 2025 — Present</div>
+          <div class="exp-body">
+            <div class="exp-main">
+              <h3>Full-Stack Engineer · <span class="exp-company">Rosterly</span></h3>
+              <div class="exp-role">Document intelligence &amp; calendar automation</div>
+              <ul>
+                <li>Built a web application that converts staff-roster images into structured, editable tables via OCR and pushes approved schedules into Google Calendar.</li>
+                <li>Designed a human-in-the-loop review surface that flags low-confidence cells for correction before downstream sync — prioritising correctness and auditability over raw OCR accuracy.</li>
+                <li>Implemented an idempotent sync layer against the Google Calendar API, so the same approved roster can be replayed without producing duplicate events.</li>
+                <li>Owned the design and delivery from OCR extraction through to the user-facing review UI and calendar integration.</li>
+              </ul>
+              <div class="exp-tags">
+                <span class="exp-tag">Python</span>
+                <span class="exp-tag">OCR</span>
+                <span class="exp-tag">Google Calendar API</span>
+                <span class="exp-tag">Web frontend</span>
+                <span class="exp-tag">Workflow automation</span>
+                <span class="exp-tag">Human-in-the-loop</span>
+              </div>
+              <div class="card-actions" style="margin-top: 0.85rem;">
+                <a href="https://github.com/ArnobTurja2002Ghosh/ScheduleReader" class="btn">Source on GitHub</a>
+              </div>
+            </div>
+            <a class="exp-graphic proof-thumb" data-caption="Rosterly · end-to-end demo: OCR → review → Google Calendar sync">
+              <img src="https://raw.githubusercontent.com/ArnobTurja2002Ghosh/ScheduleReader/refs/heads/main/docs/cd4.gif" alt="Rosterly end-to-end demo" loading="lazy" />
+            </a>
+          </div>
+        </article>
+
+        <article class="exp-item">
+          <div class="exp-period">Sep 2025 — Dec 2025</div>
+          <div class="exp-body">
+            <div class="exp-main">
+              <h3>Identity &amp; Integration Engineer · <span class="exp-company">Conduit Systems</span></h3>
+              <div class="exp-role">Backend integration tooling &amp; SaaS administration automation</div>
+              <ul>
+                <li>Engineered a FastAPI-based proxy service that intercepts and rewrites outbound HTTP traffic, restoring egress from sandboxed runtimes by injecting compliant request headers and defeating edge-layer rejections.</li>
+                <li>Designed and implemented an administration framework over Atlassian's organization-level APIs to automate end-to-end user onboarding, group assignment, and deprovisioning across Confluence workspaces.</li>
+                <li>Reconciled dual authentication models (organisation tokens and admin tokens) and mapped human-readable group names to internal Atlassian identifiers.</li>
+                <li>Exposed the proxy securely via ngrok with persistent session continuity for upstream consumers.</li>
+              </ul>
+              <div class="exp-tags">
+                <span class="exp-tag">Python</span>
+                <span class="exp-tag">FastAPI</span>
+                <span class="exp-tag">REST APIs</span>
+                <span class="exp-tag">Atlassian</span>
+                <span class="exp-tag">ngrok</span>
+                <span class="exp-tag">Google Apps Script</span>
+                <span class="exp-tag">IAM</span>
+              </div>
+            </div>
+            <a class="exp-graphic proof-thumb" data-caption="Conduit Systems · architecture overview of the proxy + Atlassian admin framework">
+              <img src="imgs1/AddUserToConfluence/ProjectSummary.png" alt="Conduit Systems architecture overview" loading="lazy" />
+            </a>
+          </div>
+        </article>
+
+        <article class="exp-item">
+          <div class="exp-period">May 2025 — Sep 2025</div>
+          <div class="exp-body">
+            <div class="exp-main">
+              <h3>Computer Vision Engineer · <span class="exp-company">Vergence Vision</span></h3>
+              <div class="exp-role">Camera calibration &amp; pose-estimation tooling</div>
+              <ul>
+                <li>Built an end-to-end computer-vision toolkit in Python that elucidates camera calibration and pose estimation using OpenCV ChArUco markers.</li>
+                <li>Authored auxiliary image-processing utilities for autonomous cropping, resizing, undistortion, and color-space conversion (raw → color → grayscale → binary).</li>
+                <li>Documented version-pinned dependencies (OpenCV Contrib 4.8.1) and published a project page so external collaborators can reproduce results.</li>
+              </ul>
+              <div class="exp-tags">
+                <span class="exp-tag">Python</span>
+                <span class="exp-tag">OpenCV Contrib</span>
+                <span class="exp-tag">NumPy</span>
+                <span class="exp-tag">Image processing</span>
+                <span class="exp-tag">Camera calibration</span>
+                <span class="exp-tag">Pose estimation</span>
+              </div>
+              <div class="card-actions" style="margin-top: 0.85rem;">
+                <a href="https://github.com/ArnobTurja2002Ghosh/openCVChArUco" class="btn">Source on GitHub</a>
+                <a href="https://ArnobTurja2002Ghosh.github.io/openCVChArUco/web" class="btn">Project page</a>
+              </div>
+            </div>
+            <a class="exp-graphic proof-thumb" data-caption="Vergence Vision · ChArUco marker detection during a calibration pass">
+              <img src="https://github.com/ArnobTurja2002Ghosh/openCVChArUco/blob/main/detectedMarkersDrawn_calibrate/12.png?raw=true" alt="ChArUco marker detection" loading="lazy" />
+            </a>
+          </div>
+        </article>
+
       </div>
     </section>
-    <hr>
-    <section>
-  
-       <h1><a name="contact" id="contact"></a>Contact</h1>
-  
-      <div id="box">
-        <p>Arnob Ghosh<br />
-          <p><a href="mailto: arnobg2002@gmail.com"><img src="gmail.png" height="16px"> Send email</a> or <a href="tel:+17092193188">Phone call</a></p>
-          <p><a href="https://www.linkedin.com/in/arnob-ghosh-13b380214/"><img src="linkedin.png" height="16px"> Connect with me on LinkedIn </a></p>
+
+    <hr/>
+
+    <!-- ============== INTRO TO PROJECTS ============== -->
+    <section class="container reveal" id="projects">
+      <div class="section-header">
+        <span class="label">// side projects</span>
+        <h2>Projects</h2>
+      </div>
+
+      <div class="prose" style="max-width: 75ch; margin-bottom: 2.5rem;">
+        <p>
+          Smaller experiments and places I went to learn an idea, a library, or a language. My interest in computer science is in data visualization; if physics can be bifurcated into classical and modern, my interest is in the classical. The projects below, done in groups or individually, reflect those interests.
+        </p>
+        <p>
+          For any group project mentioned here, I do not expect anyone to be credulous enough to believe my contribution from my words alone. The commit history of each repository should corroborate the claims I make. If a description seems equivocal, please contact me for clarification — my contact details are at the bottom of this page.
+        </p>
+        <p>
+          Check out <a href="https://github.com/ArnobTurja2002Ghosh/SetCover">my biggest Python project</a> so far, where I tried to implement almost all of my concepts about the tree data structure. It has exponential runtime but ensures optimal solutions — unlike genetic algorithms, for which I prefer Java. A few smaller projects I made while using pandas:
+        </p>
+        <ul>
+          <li><a href="https://github.com/ArnobTurja2002Ghosh/gistemp">gistemp</a> — visualised NASA data with matplotlib (pyplot, colors).</li>
+          <li><a href="https://github.com/ArnobTurja2002Ghosh/Cary">Cary</a> — visualised three datasets about Cary, North Carolina in one notebook. (Why isn't the Cary Arts Centre counted as a point of interest?)</li>
+          <li><a href="https://github.com/ArnobTurja2002Ghosh/pca">pca</a> — attempted to recreate Figures 3 and 5 from a breast-cancer classification paper; flagged axis-labelling issues in the original.</li>
+        </ul>
+      </div>
+
+      <!-- Projects grid -->
+      <div class="grid">
+        <div class="card">
+          <div class="card-media">
+            <img src="imgs1/Screenshot195835.jpg" alt="Tic-tac-toe game screenshot" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>Brython Tic-Tac-Toe</h3>
+            <p>
+              <a href="https://github.com/tabannum-lit/">Tabannum</a> and I developed a tic-tac-toe game using the Brython library of Python. Available upon request — feel free to contact either of us.
+            </p>
+          </div>
         </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h3>Search Algorithms (JS)</h3>
+            <p>
+              I have written search algorithms — <a href="https://github.com/ArnobTurja2002Ghosh/Search">BFS &amp; DFS</a>, <a href="https://github.com/ArnobTurja2002Ghosh/Search2">A*</a>, <a href="https://github.com/ArnobTurja2002Ghosh/IDDFS">IDDFS</a> — without any use of recursion, in JavaScript. They are the rough algorithms only; the environment, configuration, etc. are not included.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-media">
+            <img src="imgs1/croc_copy.jpg" alt="FishFrenz game screenshot" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>FishFrenz (ProjectAI)</h3>
+            <p>
+              A snowy night. The crocodile is trying to eat your fish friends, who take erratic turns every frame. The voracious enemy targets one fish — its direction of motion catalysed by the fish it stalks. Built in JavaScript with <a href="https://github.com/zawadman">Zawad Mutawassit</a>.
+            </p>
+            <div class="card-actions">
+              <a href="https://github.com/ArnobTurja2002Ghosh/ProjectAI" class="btn">Repository</a>
+              <a href="https://zawadman.github.io/fishFrenz/" class="btn btn-primary">Play</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-media">
+            <img src="imgs1/Screenshot132701.jpg" alt="Project Catalina430 — Geometry Wars-style game" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>Project Catalina430</h3>
+            <p>
+              <a href="https://github.com/Catalina430">Catalina430</a> created a game analogous to <a href="https://en.wikipedia.org/wiki/Geometry_Wars">Geometry Wars</a> in SFML — the same library I used for my first C++ project. I added GUI elements and made changes to the SFML core. Rather than fork-and-contribute, I named it a disparate project.
+            </p>
+            <div class="card-actions">
+              <a href="https://github.com/ArnobTurja2002Ghosh/Catalina430" class="btn">Repository</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-media">
+            <img src="imgs1/Screenshot141954.jpg" alt="Bouncing shapes C++ project" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>Bouncing Shapes</h3>
+            <p>
+              My first C++ project using SFML and ImGui, inspired by a YouTube tutorial.
+            </p>
+            <div class="card-actions">
+              <a href="https://github.com/ArnobTurja2002Ghosh/BouncingShapes" class="btn">Repository</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-media carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide active" data-caption="Empty 9×9 grid — choose a tile, hover to preview, click to place.">
+                <img src="imgs1/Screenshot 2024-11-05 165407.jpg" alt="JavaSwing1 — empty grid view" loading="lazy" />
+              </div>
+              <div class="carousel-slide" data-caption="Tile selection interface — rotate the shape, pick a color, return to the grid.">
+                <img src="imgs1/Screenshot 2024-10-30 024532.jpg" alt="JavaSwing1 — tile selection interface" loading="lazy" />
+              </div>
+              <div class="carousel-slide" data-caption="Mid-game — multiple non-overlapping tiles placed across the grid.">
+                <img src="imgs1/Screenshot 2024-10-30 022641.jpg" alt="JavaSwing1 — mid-game grid state" loading="lazy" />
+              </div>
+            </div>
+            <button class="carousel-prev" aria-label="Previous slide" type="button">‹</button>
+            <button class="carousel-next" aria-label="Next slide" type="button">›</button>
+            <div class="carousel-caption"></div>
+            <div class="carousel-dots">
+              <button class="active" data-slide="0" aria-label="Slide 1" type="button"></button>
+              <button data-slide="1" aria-label="Slide 2" type="button"></button>
+              <button data-slide="2" aria-label="Slide 3" type="button"></button>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>JavaSwing1</h3>
+            <p>
+              A Java Swing project that lets you fill a 9×9 grid with tiles of different shapes and colors. The biggest challenge was ensuring tiles cannot overlap — once that invariant held, the rest of the interaction (choose a shape, preview placement on hover, click to place) became straightforward.
+            </p>
+            <div class="card-actions">
+              <a href="https://github.com/ArnobTurja2002Ghosh/JavaSwing1" class="btn">Repository</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </section>
-  
-    </div>
+
+    <hr/>
+
+    <!-- ============== PLAYABLE GAME ============== -->
+    <section class="container game-section reveal" id="game">
+      <div class="section-header" style="justify-content: center;">
+        <span class="label">// playable demo</span>
+        <h2>Mega Man ✕ Mario, in your browser</h2>
+      </div>
+      <p style="max-width: 60ch; margin: 0 auto 1.5rem; color: var(--text-muted);">
+        A small canvas platformer experiment. Click to load; use the controls below.
+      </p>
+      <div class="game-toggle">
+        <button class="btn" id="gameToggle">▶ Load game</button>
+      </div>
+      <div id="gameWrap" class="game-hidden">
+        <canvas id="myCanvas" width="1280" height="640">
+          Your browser does not support the HTML canvas tag.
+        </canvas>
+        <div class="game-keys">
+          <span class="kbd">W — Jump</span>
+          <span class="kbd">A — Run left</span>
+          <span class="kbd">D — Run right</span>
+        </div>
+      </div>
+    </section>
+
+    <hr/>
+
+    
+
+    <hr/>
+
+    <!-- ============== CONTACT ============== -->
+    <section class="container reveal" id="contact">
+      <div class="contact-card">
+        <span class="label" style="font-family: var(--font-mono); color: var(--accent); font-size: 0.8rem; letter-spacing: .1em;">// contact</span>
+        <h2 style="margin-top: .5rem;">Let's build something.</h2>
+        <p style="max-width: 50ch; margin: 0 auto; color: var(--text-muted);">
+          The fastest way to reach me is email. I respond within a day.
+        </p>
+        <address class="contact-links">
+          <a href="mailto:arnobg2002@gmail.com" rel="author">
+            <img src="gmail.png" alt="" /> arnobg2002@gmail.com
+          </a>
+          <a href="tel:+17092193188">📞 +1 (709) 219-3188</a>
+          <a href="https://www.linkedin.com/in/arnob-ghosh-13b380214/" rel="me noopener" target="_blank">
+            <img src="linkedin.png" alt="" /> LinkedIn
+          </a>
+          <a href="https://github.com/ArnobTurja2002Ghosh" rel="me noopener" target="_blank">⌨ GitHub</a>
+        </address>
+      </div>
+    </section>
+
+    <footer class="footer container">
+      © <span id="year"></span> Arnob Ghosh · Built with care.
+    </footer>
   </main>
+
+  <!-- ============== GAME ASSETS (hidden) ============== -->
+  <div style="display: none;">
+    <img id="stand" src="./col/megaman/stand64.png" />
+    <img src="./col/mario/ground.png" alt="" id="ground" />
+    <img src="./col/mario/brick.png" alt="" id="brick" />
+    <img src="./col/megaman/explosion128.png" alt="" id="explosion" />
+    <div class="animatedSprite" id="run"></div>
+  </div>
+
+  <!-- ============== SCRIPTS ============== -->
+  <!-- p5.js for the game -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.min.js"></script>
+  <script src="col/Entity.js"></script>
+  <script src="col/scene.js"></script>
+  <script src="col/Physics.js"></script>
+
+  <script>
+    // --- Theme toggle ---
+    var toggleBtn = document.getElementById('themeToggle');
+    toggleBtn.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme') || 'dark';
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+
+    // --- Game on-demand init ---
+    var gameLoaded = false;
+    function setup() {
+      var canvas = document.getElementById('myCanvas');
+      if (!canvas) return;
+      createCanvas(canvas.width, canvas.height, canvas);
+    }
+    function initGame() {
+      if (gameLoaded) return;
+      gameLoaded = true;
+      try {
+        var scene1 = new Scene();
+        scene1.init();
+        setInterval(function () { scene1.update(); }, 1000 / 60);
+      } catch (err) {
+        console.warn('Game failed to start:', err);
+      }
+    }
+    document.getElementById('gameToggle').addEventListener('click', function () {
+      var wrap = document.getElementById('gameWrap');
+      var btn = this;
+      if (wrap.classList.contains('game-hidden')) {
+        wrap.classList.remove('game-hidden');
+        btn.textContent = '⏸ Hide game';
+        initGame();
+      } else {
+        wrap.classList.add('game-hidden');
+        btn.textContent = '▶ Load game';
+      }
+    });
+
+    // --- Video loop fallback ---
+    var milton = document.getElementById('milton');
+    if (milton) {
+      setInterval(function () {
+        try { milton.play(); } catch (e) {}
+      }, 65000);
+    }
+
+    // --- Reveal on scroll ---
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    // --- Year ---
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- Random hero portrait on each load ---
+    (function () {
+      var portraits = ['DSC_0027.JPG', 'DSC_0030.JPG', '20230207_181747.jpg', '6_n.jpg'];
+      var img = document.querySelector('.hero-portrait img');
+      if (img) {
+        img.src = portraits[Math.floor(Math.random() * portraits.length)];
+      }
+    })();
+
+    // --- Carousel (used by JavaSwing1 card) ---
+    document.querySelectorAll('[data-carousel]').forEach(function (carousel) {
+      var slides = carousel.querySelectorAll('.carousel-slide');
+      var dots = carousel.querySelectorAll('.carousel-dots button');
+      var caption = carousel.querySelector('.carousel-caption');
+      var current = 0;
+
+      function go(idx) {
+        idx = (idx + slides.length) % slides.length;
+        slides.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
+        dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+        if (caption) {
+          caption.textContent = slides[idx].getAttribute('data-caption') || '';
+        }
+        current = idx;
+      }
+
+      carousel.querySelector('.carousel-next').addEventListener('click', function (e) {
+        e.preventDefault(); e.stopPropagation(); go(current + 1);
+      });
+      carousel.querySelector('.carousel-prev').addEventListener('click', function (e) {
+        e.preventDefault(); e.stopPropagation(); go(current - 1);
+      });
+      dots.forEach(function (dot, i) {
+        dot.addEventListener('click', function (e) {
+          e.preventDefault(); e.stopPropagation(); go(i);
+        });
+      });
+      go(0);
+    });
+
+    // --- Lightbox for proof thumbnails ---
+    (function () {
+      var box = document.createElement('div');
+      box.className = 'lightbox';
+      box.innerHTML =
+        '<button class="lightbox-close" aria-label="Close">×</button>' +
+        '<img alt="" />' +
+        '<div class="lightbox-caption"></div>';
+      document.body.appendChild(box);
+      var bImg = box.querySelector('img');
+      var bCap = box.querySelector('.lightbox-caption');
+
+      function open(thumb) {
+        var img = thumb.querySelector('img');
+        if (!img) return;
+        bImg.src = img.currentSrc || img.src;
+        bImg.alt = img.alt || '';
+        bCap.textContent = thumb.getAttribute('data-caption') || img.alt || '';
+        box.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        box.classList.remove('open');
+        document.body.style.overflow = '';
+        setTimeout(function () { if (!box.classList.contains('open')) bImg.src = ''; }, 250);
+      }
+
+      document.addEventListener('click', function (e) {
+        var thumb = e.target.closest('.proof-thumb');
+        if (thumb) {
+          e.preventDefault();
+          open(thumb);
+          return;
+        }
+        // carousel slides: click the visible slide image to enlarge
+        var slide = e.target.closest('.carousel-slide');
+        if (slide && slide.classList.contains('active') && e.target.tagName === 'IMG') {
+          e.preventDefault();
+          open(slide);
+          return;
+        }
+        if (e.target === box || e.target.closest('.lightbox-close')) {
+          close();
+        }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && box.classList.contains('open')) close();
+      });
+    })();
+  </script>
+</body>
+</html>

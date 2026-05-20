@@ -1,0 +1,12 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Discourage indexing of internal asset folders
+Disallow: /col/
+Disallow: /imgs1/
+Disallow: /basic_shapes/
+Disallow: /Letter/
+
+# Point to the sitemap
+Sitemap: https://arnobturja2002ghosh.github.io/sitemap.xml
