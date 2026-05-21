@@ -9,7 +9,7 @@
   <meta name="description" content="Software developer building data-visualization tools, computer-vision pipelines, and API integrations. BSc (Honours) Computer Science, Memorial University of Newfoundland." />
   <meta name="author" content="Arnob Ghosh" />
   <meta name="keywords" content="Arnob Ghosh, software developer, full-stack engineer, computer vision, OpenCV, FastAPI, Python, Memorial University of Newfoundland, MUN, portfolio, Newfoundland software developer, OCR, Google Calendar API, Atlassian, Confluence automation, ChArUco" />
-  <link rel="canonical" href="https://arnobturja2002ghosh.github.io/" />
+  <link rel="canonical" href="https://arnobg2002.github.io/" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="theme-color" content="#0b0f17" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#f7f8fb" media="(prefers-color-scheme: light)" />
@@ -21,10 +21,10 @@
   <!-- ===== Open Graph (Facebook / LinkedIn previews) ===== -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Arnob Ghosh — Portfolio" />
-  <meta property="og:url" content="https://arnobturja2002ghosh.github.io/" />
+  <meta property="og:url" content="https://arnobg2002.github.io/" />
   <meta property="og:title" content="Arnob Ghosh — Software Developer · Portfolio" />
   <meta property="og:description" content="Software developer building data-visualization tools, computer-vision pipelines, and API integrations. BSc (Honours) Computer Science, MUN." />
-  <meta property="og:image" content="https://arnobturja2002ghosh.github.io/DSC_0027.JPG" />
+  <meta property="og:image" content="https://arnobg2002.github.io/DSC_0027.JPG" />
   <meta property="og:image:alt" content="Portrait of Arnob Ghosh" />
   <meta property="og:locale" content="en_CA" />
 
@@ -32,7 +32,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Arnob Ghosh — Software Developer" />
   <meta name="twitter:description" content="Software developer building data-visualization tools, computer-vision pipelines, and API integrations." />
-  <meta name="twitter:image" content="https://arnobturja2002ghosh.github.io/DSC_0027.JPG" />
+  <meta name="twitter:image" content="https://arnobg2002.github.io/DSC_0027.JPG" />
   <meta name="twitter:image:alt" content="Portrait of Arnob Ghosh" />
 
   <!-- Fonts -->
@@ -68,8 +68,8 @@
     "familyName": "Ghosh",
     "jobTitle": "Software Developer",
     "description": "Software developer building data-visualization tools, computer-vision pipelines, and API integrations.",
-    "url": "https://arnobturja2002ghosh.github.io/",
-    "image": "https://arnobturja2002ghosh.github.io/DSC_0027.JPG",
+    "url": "https://arnobg2002.github.io/",
+    "image": "https://arnobg2002.github.io/DSC_0027.JPG",
     "email": "mailto:arnobg2002@gmail.com",
     "telephone": "+1-709-219-3188",
     "alumniOf": {
@@ -91,7 +91,7 @@
       "Atlassian Confluence"
     ],
     "sameAs": [
-      "https://github.com/ArnobTurja2002Ghosh",
+      "https://github.com/ArnobG2002",
       "https://www.linkedin.com/in/arnob-ghosh-13b380214/",
       "https://medium.com/@arnobg2002"
     ]
@@ -104,7 +104,7 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Arnob Ghosh — Portfolio",
-    "url": "https://arnobturja2002ghosh.github.io/",
+    "url": "https://arnobg2002.github.io/",
     "author": {
       "@type": "Person",
       "name": "Arnob Ghosh"
@@ -116,10 +116,13 @@
 <body>
 
   <!-- ============== NAVBAR ============== -->
-  <nav class="nav">
+  <nav class="nav" id="siteNav">
     <div class="nav-inner">
       <a class="nav-brand" href="#top">ArnobG2002<span class="dot">.</span></a>
-      <div class="nav-links">
+      <button class="nav-burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
         <a href="#about">About</a>
         <a href="#education">Education</a>
         <a href="#experience">Experience</a>
@@ -212,38 +215,42 @@
     <article class="container reveal" id="education">
       <div class="section-header">
         <span class="label">// education</span>
-        <h2>From an Edexcel Physics Paper to the Holodeck of MUN</h2>
+        <h2>Education</h2>
       </div>
 
-      <div style="margin-bottom: 1.5rem;">
-        <span class="school-badge">
+      <div style="margin-bottom: 1rem;">
+        <button class="school-badge school-trigger" id="schoolTrigger" type="button" aria-expanded="false" aria-controls="schoolStory">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Memorial_University_of_Newfoundland_Logo.svg/1280px-Memorial_University_of_Newfoundland_Logo.svg.png" alt="MUN logo" />
-          BSc (Honours), Computer Science — 2021–2025
-        </span>
+          <span>BSc (Honours), Computer Science — 2021–2025</span>
+          <svg class="school-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
       </div>
 
-      <div class="story">
-        <div class="row-split">
-          <div class="prose">
-            <p>
-              It was during my A Levels, while preparing for <strong>Edexcel Physics</strong>, that I encountered an unexpected introduction to <em>Star Trek</em>.
-              I was working through past paper questions on Nuclear Physics when I came across a problem framed around the
-              <em>Starship Enterprise</em>. That was my first exposure to the franchise, and it immediately stood out to me.
-            </p>
-            <p>
-              As I explored the series further, my interest gradually narrowed to the concept of the Holodeck.
-              I began to wonder whether anything resembling such a system existed in reality, even as part of
-              <strong>emerging technologies</strong>. This curiosity led me to the <a href="https://en.wikipedia.org/wiki/Holographic_display">Wikipedia page on
-              holographic displays</a>. As I read through it, I became increasingly convinced that such technologies
-              could have meaningful <strong>use cases</strong>, particularly in the context of
-              <strong>defence applications</strong>. Surprisingly, however, there was no explicit mention of the military or
-              defence sector anywhere on the page.
-            </p>
-          </div>
-          <div>
-            <img src="Education/startrekquestion.png" alt="Edexcel Physics past paper question featuring the Starship Enterprise" />
-          </div>
-        </div>
+      <div class="expandable" id="schoolStory" aria-hidden="true">
+        <div class="expandable-inner">
+          <div class="story">
+            <h3 class="story-title">From an Edexcel Physics Paper to the Holodeck of MUN</h3>
+            <div class="row-split">
+              <div class="prose">
+                <p>
+                  It was during my A Levels, while preparing for <strong>Edexcel Physics</strong>, that I encountered an unexpected introduction to <em>Star Trek</em>.
+                  I was working through past paper questions on Nuclear Physics when I came across a problem framed around the
+                  <em>Starship Enterprise</em>. That was my first exposure to the franchise, and it immediately stood out to me.
+                </p>
+                <p>
+                  As I explored the series further, my interest gradually narrowed to the concept of the Holodeck.
+                  I began to wonder whether anything resembling such a system existed in reality, even as part of
+                  <strong>emerging technologies</strong>. This curiosity led me to the <a href="https://en.wikipedia.org/wiki/Holographic_display">Wikipedia page on
+                  holographic displays</a>. As I read through it, I became increasingly convinced that such technologies
+                  could have meaningful <strong>use cases</strong>, particularly in the context of
+                  <strong>defence applications</strong>. Surprisingly, however, there was no explicit mention of the military or
+                  defence sector anywhere on the page.
+                </p>
+              </div>
+              <div>
+                <img src="Education/startrekquestion.png" alt="Edexcel Physics past paper question featuring the Starship Enterprise" />
+              </div>
+            </div>
 
         <div class="row-split reverse">
           <div>
@@ -289,6 +296,8 @@
             how I think about science and technology.
           </p>
         </div>
+          </div>
+        </div>
       </div>
     </article>
 
@@ -327,11 +336,11 @@
                 <span class="exp-tag">Human-in-the-loop</span>
               </div>
               <div class="card-actions" style="margin-top: 0.85rem;">
-                <a href="https://github.com/ArnobTurja2002Ghosh/ScheduleReader" class="btn">Source on GitHub</a>
+                <a href="https://github.com/ArnobG2002/ScheduleReader" class="btn">Source on GitHub</a>
               </div>
             </div>
             <a class="exp-graphic proof-thumb" data-caption="Rosterly · end-to-end demo: OCR → review → Google Calendar sync">
-              <img src="https://raw.githubusercontent.com/ArnobTurja2002Ghosh/ScheduleReader/refs/heads/main/docs/cd4.gif" alt="Rosterly end-to-end demo" loading="lazy" />
+              <img src="https://raw.githubusercontent.com/ArnobG2002/ScheduleReader/refs/heads/main/docs/cd4.gif" alt="Rosterly end-to-end demo" loading="lazy" />
             </a>
           </div>
         </article>
@@ -384,12 +393,12 @@
                 <span class="exp-tag">Pose estimation</span>
               </div>
               <div class="card-actions" style="margin-top: 0.85rem;">
-                <a href="https://github.com/ArnobTurja2002Ghosh/openCVChArUco" class="btn">Source on GitHub</a>
-                <a href="https://ArnobTurja2002Ghosh.github.io/openCVChArUco/web" class="btn">Project page</a>
+                <a href="https://github.com/ArnobG2002/openCVChArUco" class="btn">Source on GitHub</a>
+                <a href="https://ArnobG2002.github.io/openCVChArUco/web" class="btn">Project page</a>
               </div>
             </div>
             <a class="exp-graphic proof-thumb" data-caption="Vergence Vision · ChArUco marker detection during a calibration pass">
-              <img src="https://github.com/ArnobTurja2002Ghosh/openCVChArUco/blob/main/detectedMarkersDrawn_calibrate/12.png?raw=true" alt="ChArUco marker detection" loading="lazy" />
+              <img src="https://github.com/ArnobG2002/openCVChArUco/blob/main/detectedMarkersDrawn_calibrate/12.png?raw=true" alt="ChArUco marker detection" loading="lazy" />
             </a>
           </div>
         </article>
@@ -414,12 +423,12 @@
           For any group project mentioned here, I do not expect anyone to be credulous enough to believe my contribution from my words alone. The commit history of each repository should corroborate the claims I make. If a description seems equivocal, please contact me for clarification — my contact details are at the bottom of this page.
         </p>
         <p>
-          Check out <a href="https://github.com/ArnobTurja2002Ghosh/SetCover">my biggest Python project</a> so far, where I tried to implement almost all of my concepts about the tree data structure. It has exponential runtime but ensures optimal solutions — unlike genetic algorithms, for which I prefer Java. A few smaller projects I made while using pandas:
+          Check out <a href="https://github.com/ArnobG2002/SetCover">my biggest Python project</a> so far, where I tried to implement almost all of my concepts about the tree data structure. It has exponential runtime but ensures optimal solutions — unlike genetic algorithms, for which I prefer Java. A few smaller projects I made while using pandas:
         </p>
         <ul>
-          <li><a href="https://github.com/ArnobTurja2002Ghosh/gistemp">gistemp</a> — visualised NASA data with matplotlib (pyplot, colors).</li>
-          <li><a href="https://github.com/ArnobTurja2002Ghosh/Cary">Cary</a> — visualised three datasets about Cary, North Carolina in one notebook. (Why isn't the Cary Arts Centre counted as a point of interest?)</li>
-          <li><a href="https://github.com/ArnobTurja2002Ghosh/pca">pca</a> — attempted to recreate Figures 3 and 5 from a breast-cancer classification paper; flagged axis-labelling issues in the original.</li>
+          <li><a href="https://github.com/ArnobG2002/gistemp">gistemp</a> — visualised NASA data with matplotlib (pyplot, colors).</li>
+          <li><a href="https://github.com/ArnobG2002/Cary">Cary</a> — visualised three datasets about Cary, North Carolina in one notebook. (Why isn't the Cary Arts Centre counted as a point of interest?)</li>
+          <li><a href="https://github.com/ArnobG2002/pca">pca</a> — attempted to recreate Figures 3 and 5 from a breast-cancer classification paper; flagged axis-labelling issues in the original.</li>
         </ul>
       </div>
 
@@ -441,7 +450,7 @@
           <div class="card-body">
             <h3>Search Algorithms (JS)</h3>
             <p>
-              I have written search algorithms — <a href="https://github.com/ArnobTurja2002Ghosh/Search">BFS &amp; DFS</a>, <a href="https://github.com/ArnobTurja2002Ghosh/Search2">A*</a>, <a href="https://github.com/ArnobTurja2002Ghosh/IDDFS">IDDFS</a> — without any use of recursion, in JavaScript. They are the rough algorithms only; the environment, configuration, etc. are not included.
+              I have written search algorithms — <a href="https://github.com/ArnobG2002/Search">BFS &amp; DFS</a>, <a href="https://github.com/ArnobG2002/Search2">A*</a>, <a href="https://github.com/ArnobG2002/IDDFS">IDDFS</a> — without any use of recursion, in JavaScript. They are the rough algorithms only; the environment, configuration, etc. are not included.
             </p>
           </div>
         </div>
@@ -456,7 +465,7 @@
               A snowy night. The crocodile is trying to eat your fish friends, who take erratic turns every frame. The voracious enemy targets one fish — its direction of motion catalysed by the fish it stalks. Built in JavaScript with <a href="https://github.com/zawadman">Zawad Mutawassit</a>.
             </p>
             <div class="card-actions">
-              <a href="https://github.com/ArnobTurja2002Ghosh/ProjectAI" class="btn">Repository</a>
+              <a href="https://github.com/ArnobG2002/ProjectAI" class="btn">Repository</a>
               <a href="https://zawadman.github.io/fishFrenz/" class="btn btn-primary">Play</a>
             </div>
           </div>
@@ -472,7 +481,7 @@
               <a href="https://github.com/Catalina430">Catalina430</a> created a game analogous to <a href="https://en.wikipedia.org/wiki/Geometry_Wars">Geometry Wars</a> in SFML — the same library I used for my first C++ project. I added GUI elements and made changes to the SFML core. Rather than fork-and-contribute, I named it a disparate project.
             </p>
             <div class="card-actions">
-              <a href="https://github.com/ArnobTurja2002Ghosh/Catalina430" class="btn">Repository</a>
+              <a href="https://github.com/ArnobG2002/Catalina430" class="btn">Repository</a>
             </div>
           </div>
         </div>
@@ -487,7 +496,7 @@
               My first C++ project using SFML and ImGui, inspired by a YouTube tutorial.
             </p>
             <div class="card-actions">
-              <a href="https://github.com/ArnobTurja2002Ghosh/BouncingShapes" class="btn">Repository</a>
+              <a href="https://github.com/ArnobG2002/BouncingShapes" class="btn">Repository</a>
             </div>
           </div>
         </div>
@@ -520,7 +529,7 @@
               A Java Swing project that lets you fill a 9×9 grid with tiles of different shapes and colors. The biggest challenge was ensuring tiles cannot overlap — once that invariant held, the rest of the interaction (choose a shape, preview placement on hover, click to place) became straightforward.
             </p>
             <div class="card-actions">
-              <a href="https://github.com/ArnobTurja2002Ghosh/JavaSwing1" class="btn">Repository</a>
+              <a href="https://github.com/ArnobG2002/JavaSwing1" class="btn">Repository</a>
             </div>
           </div>
         </div>
@@ -576,7 +585,7 @@
           <a href="https://www.linkedin.com/in/arnob-ghosh-13b380214/" rel="me noopener" target="_blank">
             <img src="linkedin.png" alt="" /> LinkedIn
           </a>
-          <a href="https://github.com/ArnobTurja2002Ghosh" rel="me noopener" target="_blank">⌨ GitHub</a>
+          <a href="https://github.com/ArnobG2002" rel="me noopener" target="_blank">⌨ GitHub</a>
         </address>
       </div>
     </section>
@@ -664,6 +673,54 @@
 
     // --- Year ---
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- Hamburger nav ---
+    (function () {
+      var nav = document.getElementById('siteNav');
+      var burger = document.getElementById('navBurger');
+      var links = document.getElementById('navLinks');
+      if (!burger || !nav) return;
+
+      function setOpen(open) {
+        nav.classList.toggle('open', open);
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      }
+      burger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(!nav.classList.contains('open'));
+      });
+      // Close when clicking a nav link
+      links.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function () { setOpen(false); });
+      });
+      // Close when clicking outside the nav
+      document.addEventListener('click', function (e) {
+        if (nav.classList.contains('open') && !nav.contains(e.target)) setOpen(false);
+      });
+      // Close on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && nav.classList.contains('open')) setOpen(false);
+      });
+    })();
+
+    // --- Education school badge → expandable story ---
+    (function () {
+      var trigger = document.getElementById('schoolTrigger');
+      var story = document.getElementById('schoolStory');
+      if (!trigger || !story) return;
+      trigger.addEventListener('click', function () {
+        var isOpen = story.classList.toggle('open');
+        trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        story.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+        // Scroll the trigger into a comfortable position when expanding
+        if (isOpen) {
+          setTimeout(function () {
+            trigger.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 50);
+        }
+      });
+    })();
 
     // --- Random hero portrait on each load ---
     (function () {

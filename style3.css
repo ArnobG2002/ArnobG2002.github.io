@@ -559,8 +559,7 @@ section, article { margin: 4rem 0; }
   .story .row-split.reverse { grid-template-columns: 1fr; }
   hr { margin: 2.5rem 0; }
   section, article { margin: 2.5rem 0; }
-  .nav-links a:not(.theme-wrap) { display: none; }
-  .nav-links .theme-wrap { display: inline-flex; }
+  /* nav links handled by .nav.open in the mobile menu section below */
 }
 
 /* Hide legacy bootstrap-specific elements gracefully */
@@ -1029,4 +1028,178 @@ details.proof[open] summary::after { opacity: 0; }
 }
 .carousel:hover .carousel-caption {
   opacity: 1;
+}
+
+/* ============================================================
+   Hamburger nav (mobile)
+   ============================================================ */
+.nav-burger {
+  display: none;
+  width: 38px;
+  height: 38px;
+  margin-left: auto;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-elev);
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 60;
+}
+.nav-burger span {
+  position: absolute;
+  left: 9px;
+  right: 9px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform .3s cubic-bezier(.5,.05,.15,1),
+              top .3s cubic-bezier(.5,.05,.15,1),
+              opacity .2s ease;
+}
+.nav-burger span:nth-child(1) { top: 12px; }
+.nav-burger span:nth-child(2) { top: 18px; }
+.nav-burger span:nth-child(3) { top: 24px; }
+
+.nav.open .nav-burger span:nth-child(1) {
+  top: 18px;
+  transform: rotate(45deg);
+}
+.nav.open .nav-burger span:nth-child(2) {
+  opacity: 0;
+}
+.nav.open .nav-burger span:nth-child(3) {
+  top: 18px;
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 860px) {
+  .nav-burger { display: inline-block; }
+
+  .nav-inner { gap: 0.75rem; }
+
+  /* Slide-down menu panel */
+  .nav-links {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin-left: 0;
+    padding: 0.75rem 1.25rem 1.25rem;
+    background: color-mix(in srgb, var(--bg) 95%, transparent);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transform: translateY(-12px);
+    pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+  .nav.open .nav-links {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .nav-links a {
+    padding: 0.85rem 0.25rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 1rem;
+    color: var(--text-soft);
+  }
+  .nav-links a:last-of-type { border-bottom: 0; }
+  .nav-links .theme-wrap {
+    margin-top: 0.75rem;
+    align-self: flex-end;
+  }
+}
+
+/* ============================================================
+   Education — clickable school badge & expandable story
+   ============================================================ */
+button.school-badge {
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text-soft);
+  position: relative;
+  padding-right: 2.5rem;
+  transition: transform .15s ease, border-color .2s ease, background .2s ease, box-shadow .25s ease;
+}
+button.school-badge:hover {
+  border-color: var(--accent);
+  background: var(--bg-elev-2);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+button.school-badge:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.school-trigger-hint {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  opacity: 0.85;
+  margin-left: 0.25rem;
+  letter-spacing: 0.04em;
+}
+.school-chevron {
+  position: absolute;
+  right: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent);
+  transition: transform .35s cubic-bezier(.5,.05,.15,1);
+}
+button.school-badge[aria-expanded="true"] .school-chevron {
+  transform: translateY(-50%) rotate(180deg);
+}
+button.school-badge[aria-expanded="true"] .school-trigger-hint {
+  opacity: 0;
+}
+
+/* Expandable container — grid-template-rows transitions smoothly */
+.expandable {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .65s cubic-bezier(.2,.7,.2,1);
+}
+.expandable > .expandable-inner {
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity .45s ease .1s, transform .55s cubic-bezier(.2,.7,.2,1) .1s;
+}
+.expandable.open {
+  grid-template-rows: 1fr;
+}
+.expandable.open > .expandable-inner {
+  opacity: 1;
+  transform: none;
+}
+.story-title {
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  margin: 1.25rem 0 1.5rem;
+}
+
+/* Fallback for browsers without `grid-template-rows` interpolation
+   (kept as a graceful enhancement guard, no JS measure needed) */
+@supports not (grid-template-rows: 1fr) {
+  .expandable { display: block; max-height: 0; overflow: hidden; transition: max-height .6s ease; }
+  .expandable.open { max-height: 5000px; }
+}
+
+/* ============================================================
+   Hide playable demo on screens ≤ 1280px
+   (the canvas is 1280px wide — anything narrower can't show it
+    without horizontal scrolling)
+   ============================================================ */
+@media (max-width: 1280px) {
+  #game { display: none; }
+  /* drop the trailing <hr> so we don't get a doubled divider */
+  #game + hr { display: none; }
 }

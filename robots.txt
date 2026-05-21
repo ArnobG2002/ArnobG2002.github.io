@@ -9,4 +9,4 @@ Disallow: /basic_shapes/
 Disallow: /Letter/
 
 # Point to the sitemap
-Sitemap: https://arnobturja2002ghosh.github.io/sitemap.xml
+Sitemap: https://arnobg2002.github.io/sitemap.xml
