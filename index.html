@@ -118,7 +118,7 @@
   <!-- ============== NAVBAR ============== -->
   <nav class="nav" id="siteNav">
     <div class="nav-inner">
-      <a class="nav-brand" href="#top">ArnobG2002<span class="dot">.</span></a>
+      <a class="nav-brand" href="#top">ArnobG<span id="demo"></span><span class="dot">.</span></a>
       <button class="nav-burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
@@ -145,7 +145,7 @@
     <section class="container hero reveal" id="about">
       <div>
         <span class="eyebrow">Available for work</span>
-        <h1>Hi, I'm <span class="grad">Arnob Ghosh</span><br/>Software Developer.</h1>
+        <h1>Hi, I'm <span class="grad">Arnob</span> <span class="grad">Ghosh</span><br/>Software Developer.</h1>
         <p class="lead">
           I build data-visualization tools, computer-vision pipelines, and API integrations that ship. BSc (Honours), Computer Science — Memorial University of Newfoundland. Equal parts curiosity about emerging tech and discipline about making it actually useful.
         </p>
@@ -559,6 +559,7 @@
           <span class="kbd">W — Jump</span>
           <span class="kbd">A — Run left</span>
           <span class="kbd">D — Run right</span>
+          <button class="kbd" id="aiToggle" type="button" style="cursor:pointer; background:none; border:none; font:inherit; color:inherit;">🤖 Auto-break</button>
         </div>
       </div>
     </section>
@@ -592,6 +593,7 @@
 
     <footer class="footer container">
       © <span id="year"></span> Arnob Ghosh · Built with care.
+      <span class="now-line" id="nowLine" aria-live="polite"></span>
     </footer>
   </main>
 
@@ -605,212 +607,17 @@
   </div>
 
   <!-- ============== SCRIPTS ============== -->
-  <!-- p5.js for the game -->
+  <!-- p5.js — used by game-init.js to attach the canvas -->
   <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.min.js"></script>
+  <!-- Game engine -->
   <script src="col/Entity.js"></script>
-  <script src="col/scene.js"></script>
   <script src="col/Physics.js"></script>
-
-  <script>
-    // --- Theme toggle ---
-    var toggleBtn = document.getElementById('themeToggle');
-    toggleBtn.addEventListener('click', function () {
-      var current = document.documentElement.getAttribute('data-theme') || 'dark';
-      var next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      try { localStorage.setItem('theme', next); } catch (e) {}
-    });
-
-    // --- Game on-demand init ---
-    var gameLoaded = false;
-    function setup() {
-      var canvas = document.getElementById('myCanvas');
-      if (!canvas) return;
-      createCanvas(canvas.width, canvas.height, canvas);
-    }
-    function initGame() {
-      if (gameLoaded) return;
-      gameLoaded = true;
-      try {
-        var scene1 = new Scene();
-        scene1.init();
-        setInterval(function () { scene1.update(); }, 1000 / 60);
-      } catch (err) {
-        console.warn('Game failed to start:', err);
-      }
-    }
-    document.getElementById('gameToggle').addEventListener('click', function () {
-      var wrap = document.getElementById('gameWrap');
-      var btn = this;
-      if (wrap.classList.contains('game-hidden')) {
-        wrap.classList.remove('game-hidden');
-        btn.textContent = '⏸ Hide game';
-        initGame();
-      } else {
-        wrap.classList.add('game-hidden');
-        btn.textContent = '▶ Load game';
-      }
-    });
-
-    // --- Video loop fallback ---
-    var milton = document.getElementById('milton');
-    if (milton) {
-      setInterval(function () {
-        try { milton.play(); } catch (e) {}
-      }, 65000);
-    }
-
-    // --- Reveal on scroll ---
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-
-    // --- Year ---
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // --- Hamburger nav ---
-    (function () {
-      var nav = document.getElementById('siteNav');
-      var burger = document.getElementById('navBurger');
-      var links = document.getElementById('navLinks');
-      if (!burger || !nav) return;
-
-      function setOpen(open) {
-        nav.classList.toggle('open', open);
-        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-        burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      }
-      burger.addEventListener('click', function (e) {
-        e.stopPropagation();
-        setOpen(!nav.classList.contains('open'));
-      });
-      // Close when clicking a nav link
-      links.querySelectorAll('a[href^="#"]').forEach(function (a) {
-        a.addEventListener('click', function () { setOpen(false); });
-      });
-      // Close when clicking outside the nav
-      document.addEventListener('click', function (e) {
-        if (nav.classList.contains('open') && !nav.contains(e.target)) setOpen(false);
-      });
-      // Close on Escape
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && nav.classList.contains('open')) setOpen(false);
-      });
-    })();
-
-    // --- Education school badge → expandable story ---
-    (function () {
-      var trigger = document.getElementById('schoolTrigger');
-      var story = document.getElementById('schoolStory');
-      if (!trigger || !story) return;
-      trigger.addEventListener('click', function () {
-        var isOpen = story.classList.toggle('open');
-        trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        story.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
-        // Scroll the trigger into a comfortable position when expanding
-        if (isOpen) {
-          setTimeout(function () {
-            trigger.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 50);
-        }
-      });
-    })();
-
-    // --- Random hero portrait on each load ---
-    (function () {
-      var portraits = ['DSC_0027.JPG', 'DSC_0030.JPG', '20230207_181747.jpg', '6_n.jpg'];
-      var img = document.querySelector('.hero-portrait img');
-      if (img) {
-        img.src = portraits[Math.floor(Math.random() * portraits.length)];
-      }
-    })();
-
-    // --- Carousel (used by JavaSwing1 card) ---
-    document.querySelectorAll('[data-carousel]').forEach(function (carousel) {
-      var slides = carousel.querySelectorAll('.carousel-slide');
-      var dots = carousel.querySelectorAll('.carousel-dots button');
-      var caption = carousel.querySelector('.carousel-caption');
-      var current = 0;
-
-      function go(idx) {
-        idx = (idx + slides.length) % slides.length;
-        slides.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
-        dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
-        if (caption) {
-          caption.textContent = slides[idx].getAttribute('data-caption') || '';
-        }
-        current = idx;
-      }
-
-      carousel.querySelector('.carousel-next').addEventListener('click', function (e) {
-        e.preventDefault(); e.stopPropagation(); go(current + 1);
-      });
-      carousel.querySelector('.carousel-prev').addEventListener('click', function (e) {
-        e.preventDefault(); e.stopPropagation(); go(current - 1);
-      });
-      dots.forEach(function (dot, i) {
-        dot.addEventListener('click', function (e) {
-          e.preventDefault(); e.stopPropagation(); go(i);
-        });
-      });
-      go(0);
-    });
-
-    // --- Lightbox for proof thumbnails ---
-    (function () {
-      var box = document.createElement('div');
-      box.className = 'lightbox';
-      box.innerHTML =
-        '<button class="lightbox-close" aria-label="Close">×</button>' +
-        '<img alt="" />' +
-        '<div class="lightbox-caption"></div>';
-      document.body.appendChild(box);
-      var bImg = box.querySelector('img');
-      var bCap = box.querySelector('.lightbox-caption');
-
-      function open(thumb) {
-        var img = thumb.querySelector('img');
-        if (!img) return;
-        bImg.src = img.currentSrc || img.src;
-        bImg.alt = img.alt || '';
-        bCap.textContent = thumb.getAttribute('data-caption') || img.alt || '';
-        box.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
-      function close() {
-        box.classList.remove('open');
-        document.body.style.overflow = '';
-        setTimeout(function () { if (!box.classList.contains('open')) bImg.src = ''; }, 250);
-      }
-
-      document.addEventListener('click', function (e) {
-        var thumb = e.target.closest('.proof-thumb');
-        if (thumb) {
-          e.preventDefault();
-          open(thumb);
-          return;
-        }
-        // carousel slides: click the visible slide image to enlarge
-        var slide = e.target.closest('.carousel-slide');
-        if (slide && slide.classList.contains('active') && e.target.tagName === 'IMG') {
-          e.preventDefault();
-          open(slide);
-          return;
-        }
-        if (e.target === box || e.target.closest('.lightbox-close')) {
-          close();
-        }
-      });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && box.classList.contains('open')) close();
-      });
-    })();
-  </script>
+  <script src="col/scene.js"></script>
+  <!-- Site scripts -->
+  <script src="countdown/countdown.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/game-init.js"></script>
+  <script src="js/site-ui.js"></script>
+  <script src="js/konami.js"></script>
 </body>
 </html>

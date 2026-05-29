@@ -9,9 +9,9 @@ class Entity
         this.state=null;
         this.texture=texture;
         this.transform=1;
+        this.collidable=true;   // explicit flag; set to false on death/explosion
     }
     hasCollision(){
-        if(this.rect.length==4){return true;}
-        return false;
+        return this.collidable;
     }
 }
