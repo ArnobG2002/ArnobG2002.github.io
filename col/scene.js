@@ -130,8 +130,13 @@ class Scene
 
     /**
      * Each frame, pick the leftmost live brick, walk toward it, and jump
-     * when aligned.  A cooldown prevents rapid re-jumping so Megaman has
-     * time to land before the next attempt.
+     * when aligned below it.  A cooldown prevents rapid re-jumping so
+     * Megaman has time to land before the next attempt.
+     *
+     * Edge case handled: if Megaman is standing on TOP of (or above) the
+     * target brick he cannot reach its underside by jumping.  A repositioning
+     * phase walks him toward the nearer edge until he falls off, at which
+     * point normal below-target logic takes over.
      */
     aiUpdate()
     {
@@ -163,13 +168,32 @@ class Scene
             return;
         }
 
+        // ── Repositioning phase ───────────────────────────────────────────────
+        // The player must be BELOW the brick (playerBottom > brickTop) to jump
+        // up and hit it from underneath.  If the player is at or above the
+        // brick top — standing on it or on a higher platform — walk toward the
+        // nearer edge and fall off first.
+        const playerBottom = this.player.rect[1] + this.player.rect[3];
+        const brickTop     = target.rect[1];
+
+        if (playerBottom <= brickTop + 8) {
+            // Step off: walk away from the brick's centre toward the nearer edge
+            const playerCentreX = this.player.rect[0] + this.player.rect[2] / 2;
+            const brickCentreX  = target.rect[0]      + target.rect[2]      / 2;
+            this.player.right = playerCentreX > brickCentreX;
+            this.player.left  = playerCentreX <= brickCentreX;
+            this.player.up    = false;
+            return;
+        }
+
+        // ── Approach and jump phase ───────────────────────────────────────────
         if (Math.abs(diff) > 8) {
             // Not yet aligned — walk toward the brick
             this.player.right = diff > 0;
             this.player.left  = diff < 0;
             this.player.up    = false;
         } else {
-            // Aligned — jump!
+            // Horizontally aligned and below the brick — jump!
             this.player.right = false;
             this.player.left  = false;
             if (this.player.state !== 'jumping') {

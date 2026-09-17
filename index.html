@@ -189,7 +189,7 @@
             </div>
             <div class="tech-strip" style="margin-bottom: 1rem;">
               <img src="https://angular.dev/assets/images/press-kit/angular_icon_gradient.gif" alt="Angular" />
-              <img src="https://devopedia.org/images/article/45/8328.1526292163.svg" alt="Pandas" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/R_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original" alt="Pandas" />
               <img src="https://www.pythontutorial.net/wp-content/uploads/2022/08/numpy-tutorial.svg" alt="NumPy" />
               <span class="opencv-wrap" title="OpenCV — hover to reveal" aria-label="OpenCV">
                 <img class="opencv-logo" src="https://opencv.org/wp-content/uploads/2022/05/logo.png" alt="OpenCV" />
@@ -213,6 +213,12 @@
 
     <!-- ============== EDUCATION NARRATIVE ============== -->
     <article class="container reveal" id="education">
+      <!-- Holodeck 3D scene. Sits behind the section content at z-index -1.
+           Only rendered when Three.js lazy-loads on scroll-in (see script
+           at the bottom). CSS ::before grid is the fallback until then, or
+           forever on reduced-motion / small viewports. -->
+      <canvas id="holodeck-canvas" aria-hidden="true"></canvas>
+
       <div class="section-header">
         <span class="label">// education</span>
         <h2>Education</h2>
@@ -240,7 +246,12 @@
                 <p>
                   As I explored the series further, my interest gradually narrowed to the concept of the Holodeck.
                   I began to wonder whether anything resembling such a system existed in reality, even as part of
-                  <strong>emerging technologies</strong>. This curiosity led me to the <a href="https://en.wikipedia.org/wiki/Holographic_display">Wikipedia page on
+                  <strong>emerging technologies</strong>. Searching for real-world analogues, I came across
+                  <a href="https://www.provideocoalition.com/smpte-hollywood-explores-immersive-vr-and-shows-holographic-display/" rel="noopener" target="_blank">Jose Antunes' preview</a>
+                  of a June 2019 SMPTE Hollywood meeting titled &ldquo;Building Truly Immersive Experiences: Are You Ready for the Holodeck?&rdquo; —
+                  the only record of that meeting I could find. That article was where I first encountered the idea of
+                  <strong>holographic displays</strong>. From there I followed the thread to the
+                  <a href="https://en.wikipedia.org/wiki/Holographic_display" rel="noopener" target="_blank">Wikipedia page on
                   holographic displays</a>. As I read through it, I became increasingly convinced that such technologies
                   could have meaningful <strong>use cases</strong>, particularly in the context of
                   <strong>defence applications</strong>. Surprisingly, however, there was no explicit mention of the military or
@@ -248,8 +259,10 @@
                 </p>
               </div>
               <div>
-                <img src="Education/startrekquestion.png" alt="Edexcel Physics past paper question featuring the Starship Enterprise" />
-              </div>
+                <a href="https://pmt.physicsandmathstutor.com/download/Physics/A-level/Past-Papers/Edexcel-IAL/Unit-4/January%202012%20QP%20-%20Unit%204%20Edexcel%20Physics%20A-level.pdf">
+                  <img src="Education/startrekquestion.png" alt="Edexcel Physics past paper question featuring the Starship Enterprise" />
+                </a>
+                </div>
             </div>
 
         <div class="row-split reverse">
@@ -619,5 +632,6 @@
   <script src="js/game-init.js"></script>
   <script src="js/site-ui.js"></script>
   <script src="js/konami.js"></script>
+  <script src="js/holodeck.js"></script>
 </body>
 </html>

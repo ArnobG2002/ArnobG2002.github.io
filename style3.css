@@ -372,7 +372,10 @@ section, article { margin: 4rem 0; }
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   gap: 2rem;
-  align-items: start;
+  /* Center vertically so any image/text height mismatch splits evenly
+     above and below the shorter column, reading as breathing room
+     rather than an orphaned gap. */
+  align-items: center;
 }
 .story .row-split.reverse { grid-template-columns: 1fr 1.5fr; }
 .story img {
@@ -1269,6 +1272,34 @@ button.school-badge[aria-expanded="true"] .school-trigger-hint {
     repeating-linear-gradient(to bottom,
       rgba(45, 212, 191, 0.85) 0 1px, transparent 1px 48px);
   opacity: 0.22;
+}
+
+/* ============================================================
+   Three.js holodeck canvas — progressive enhancement of the
+   ::before grid above. When holodeck.js successfully loads
+   Three.js and initialises, it adds .has-webgl to #education,
+   which hides the CSS fallback and shows the WebGL scene.
+   Fallback path is kept for reduced-motion, small viewports,
+   WebGL failure, and JS-disabled visitors.
+   ============================================================ */
+#holodeck-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  display: none; /* only rendered when JS opts in */
+}
+#education.has-webgl #holodeck-canvas {
+  display: block;
+  opacity: 1;
+}
+#education.has-webgl::before {
+  /* Hide the CSS fallback grid once the real 3D scene is live */
+  display: none;
 }
 
 /* ============================================================
